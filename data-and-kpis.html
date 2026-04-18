@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data and KPIs</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #f0f0f0; color: #1a1a1a; padding: 48px 20px 80px; }
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .hero { background: #1a1a1a; border-radius: 14px; padding: 52px 56px; }
+    .hero-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 14px; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+    .hero p { font-size: 15px; color: #777; line-height: 1.7; max-width: 540px; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; }
+    .card-header { padding: 24px 36px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 14px; }
+    .card-icon { width: 36px; height: 36px; background: #f4f4f4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .card-title { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; }
+    .card-body { padding: 28px 36px; display: flex; flex-direction: column; gap: 20px; }
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .item { display: flex; gap: 12px; align-items: flex-start; }
+    .item-bullet { width: 6px; height: 6px; background: #1a1a1a; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .item p { font-size: 13px; color: #444; line-height: 1.6; }
+    .item p strong { color: #1a1a1a; font-weight: 600; }
+    .divider { height: 1px; background: #f4f4f4; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .kpi-card { border: 1px solid #f0f0f0; border-radius: 10px; padding: 20px; text-align: center; }
+    .kpi-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .kpi-desc { font-size: 11px; color: #aaa; line-height: 1.4; margin-top: 6px; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #aaa; padding: 8px 12px; border-bottom: 2px solid #f0f0f0; text-align: left; }
+    .table td { font-size: 13px; color: #444; padding: 12px 12px; border-bottom: 1px solid #f8f8f8; }
+    .table td:first-child { font-weight: 600; color: #1a1a1a; }
+    .table tr:last-child td { border-bottom: none; }
+    @media (max-width: 600px) { .hero { padding: 36px 24px; } .hero h1 { font-size: 26px; } .card-body { padding: 20px; } .kpi-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-label">Sales Operations</div>
+    <h1>Data and KPIs</h1>
+    <p>How to define the right metrics, track them consistently, and use the data to make decisions — not just fill dashboards.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">📐</div><div class="card-title">Why Data Matters</div></div>
+    <div class="card-body">
+      <div class="item"><div class="item-bullet"></div><p>You cannot improve what you cannot measure. Data tells you whether you have a top-of-funnel problem, a qualification problem, a call problem, or a follow-up problem. Without it, you are guessing at the wrong fix.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>Every KPI on this list exists because it points to a specific action. If a number does not tell you what to do next, it is not a useful KPI.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>The goal is not a perfect dashboard — it is faster diagnosis and better decisions. Track less, act on it more.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">📊</div><div class="card-title">SDR KPIs</div></div>
+    <div class="card-body">
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-label">Prospects / Week</div><div class="kpi-desc">New contacts reached via outbound each week</div></div>
+        <div class="kpi-card"><div class="kpi-label">Response Rate</div><div class="kpi-desc">Replies generated from outbound touchpoints</div></div>
+        <div class="kpi-card"><div class="kpi-label">Qualified Calls / Week</div><div class="kpi-desc">Calls booked that meet ICP criteria</div></div>
+      </div>
+      <div class="divider"></div>
+      <table class="table">
+        <thead><tr><th>Metric</th><th>If Below Target</th></tr></thead>
+        <tbody>
+          <tr><td>Prospects contacted / week</td><td>Review outreach volume and sequence start rate</td></tr>
+          <tr><td>Response rate</td><td>Audit first-touch messaging — subject lines, personalization, opening hook</td></tr>
+          <tr><td>Qualified calls booked / week</td><td>Check qualification standards — are unqualified leads being screened before booking?</td></tr>
+          <tr><td>Show rate on booked calls</td><td>Review pre-call reminder sequences and confirmation process</td></tr>
+          <tr><td>CRM activity logged same day</td><td>Address directly in 1on1. Non-negotiable standard.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🎯</div><div class="card-title">Closer KPIs</div></div>
+    <div class="card-body">
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-label">Show Rate</div><div class="kpi-desc">Prospects who attend their booked call</div></div>
+        <div class="kpi-card"><div class="kpi-label">Close Rate</div><div class="kpi-desc">Calls that result in a signed contract</div></div>
+        <div class="kpi-card"><div class="kpi-label">Avg Deal Size</div><div class="kpi-desc">Average contract value per closed deal</div></div>
+      </div>
+      <div class="divider"></div>
+      <table class="table">
+        <thead><tr><th>Metric</th><th>If Below Target</th></tr></thead>
+        <tbody>
+          <tr><td>Show rate</td><td>Check pre-call sequence timing and messaging quality</td></tr>
+          <tr><td>Close rate</td><td>Pull last 10 lost deals — find the pattern. Discovery, pitch, objections, or follow-up?</td></tr>
+          <tr><td>Avg deal size</td><td>Review how scope is presented. Are reps underselling or taking the wrong calls?</td></tr>
+          <tr><td>Follow-up sent same day</td><td>Address directly. Post-call follow-up is non-negotiable.</td></tr>
+          <tr><td>Days in pipeline stage</td><td>Flag any deal with no activity for 7+ days. Move it forward or close it out.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🔁</div><div class="card-title">How to Define a KPI</div></div>
+    <div class="card-body">
+      <div>
+        <div class="section-label">A Good KPI Has Three Things</div>
+        <div class="item"><div class="item-bullet"></div><p><strong>A clear definition.</strong> Everyone on the team should be able to describe exactly how it is measured — no interpretation required.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>A specific target.</strong> Not "improve response rate" — a number. "10% response rate or above." Vague targets create vague accountability.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>A linked action.</strong> If it goes below target, there is a specific thing you check or change. A metric without a response plan is just a number.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Diagnosing with Data</div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Low response rate:</strong> The messaging is not landing. Compare your best-performing first touch to your worst. What is the difference?</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Low show rate:</strong> The pre-call sequence is not creating enough urgency, or the confirmation process is broken.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Low close rate:</strong> Pull the recordings. Find the exact moment the deal loses momentum — discovery, pitch, price, or follow-up.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Low deal size:</strong> Either reps are taking calls that are not a fit for the price point, or they are underselling the scope of what is possible.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">What Not to Do with Data</div>
+        <div class="item"><div class="item-bullet"></div><p>Do not track a metric you have no plan to act on. A dashboard with 20 numbers and no actions is noise.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Do not use data to shame — use it to diagnose. The question is always "what do we fix," not "whose fault is this."</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Do not wait until the end of the month to look at the numbers. Weekly reviews catch problems before they become expensive.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
