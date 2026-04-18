@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selling Outbound vs. Inbound</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #f0f0f0; color: #1a1a1a; padding: 48px 20px 80px; }
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .hero { background: #1a1a1a; border-radius: 14px; padding: 52px 56px; }
+    .hero-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 14px; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+    .hero p { font-size: 15px; color: #777; line-height: 1.7; max-width: 540px; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; }
+    .card-header { padding: 24px 36px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 14px; }
+    .card-icon { width: 36px; height: 36px; background: #f4f4f4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .card-title { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; }
+    .card-body { padding: 28px 36px; display: flex; flex-direction: column; gap: 20px; }
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .item { display: flex; gap: 12px; align-items: flex-start; }
+    .item-bullet { width: 6px; height: 6px; background: #1a1a1a; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .item p { font-size: 13px; color: #444; line-height: 1.6; }
+    .item p strong { color: #1a1a1a; font-weight: 600; }
+    .divider { height: 1px; background: #f4f4f4; }
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .compare-col { border: 1px solid #f0f0f0; border-radius: 10px; padding: 24px; }
+    .compare-col .col-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+    .compare-col h3 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; margin-bottom: 16px; }
+    .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .compare-col ul li { font-size: 13px; color: #444; line-height: 1.5; padding-left: 16px; position: relative; }
+    .compare-col ul li::before { content: '→'; position: absolute; left: 0; color: #bbb; font-size: 11px; top: 2px; }
+    @media (max-width: 600px) { .hero { padding: 36px 24px; } .hero h1 { font-size: 26px; } .card-body { padding: 20px; } .compare { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-label">Sales Operations</div>
+    <h1>Selling Outbound vs. Inbound</h1>
+    <p>The mindset, approach, and qualification process are different depending on how a lead came in. Treating them the same way is one of the most common mistakes reps make.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🔄</div><div class="card-title">Why the Difference Matters</div></div>
+    <div class="card-body">
+      <div class="item"><div class="item-bullet"></div><p>An inbound lead has already raised their hand. They know something about you. The conversation starts warmer, trust is higher, and it moves faster toward a decision.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>An outbound lead did not ask to hear from you. You interrupted their day. Your first job is to earn the right to a real conversation — not to pitch.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>Moving too fast with an outbound lead burns it. Moving too slow with an inbound lead loses it. Know which you are dealing with before you open your mouth.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">📊</div><div class="card-title">Side by Side</div></div>
+    <div class="card-body">
+      <div class="compare">
+        <div class="compare-col">
+          <div class="col-label">Outbound</div>
+          <h3>You found them</h3>
+          <ul>
+            <li>No prior awareness of your offer</li>
+            <li>You interrupted their workflow — earn it</li>
+            <li>Trust starts at zero</li>
+            <li>First message goal: earn a reply, not a meeting</li>
+            <li>Qualify before booking — do not waste a closer's time</li>
+            <li>Expect more skepticism and a slower pace</li>
+            <li>Longer warm-up phase on the call</li>
+            <li>May need 2+ calls to close</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <div class="col-label">Inbound</div>
+          <h3>They found you</h3>
+          <ul>
+            <li>Has some awareness — they opted in</li>
+            <li>Curiosity is already there — do not squander it</li>
+            <li>Trust starts higher</li>
+            <li>First call goal: qualify and move toward a decision</li>
+            <li>Still qualify — interest does not equal fit</li>
+            <li>Fewer objections, faster pace</li>
+            <li>Discovery can be shorter — they know the what</li>
+            <li>More likely to close on call 1 or 2</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">📤</div><div class="card-title">Outbound — The Approach</div></div>
+    <div class="card-body">
+      <div>
+        <div class="section-label">The Mindset</div>
+        <div class="item"><div class="item-bullet"></div><p>You are not selling on the first message. You are earning the right to a conversation. The goal of outreach is a reply, not a close.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Personalization is not optional. Generic outreach gets ignored. One specific, relevant observation about the prospect outperforms a hundred blasted templates.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">The Sequence</div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Touch 1:</strong> Connection or first contact. Short, relevant, no pitch. Reference something specific about them.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Touch 2:</strong> Value-led follow-up. One question that connects to a real problem they likely have.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Touch 3:</strong> Soft follow-up. Refer back to the original message, stay low pressure.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Touch 4:</strong> Personalized insight. Something you found specific to their business that makes the problem tangible.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>Touch 5:</strong> Breakup message. Low pressure. No guilt. Leave the door open for when timing is right.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Qualifying Before the Call</div>
+        <div class="item"><div class="item-bullet"></div><p>Confirm fit before booking: budget authority, company profile, and genuine interest in solving the problem — not just politeness.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>A warm response is not a qualified lead. Qualify before the closer's calendar gets blocked.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">On the Call</div>
+        <div class="item"><div class="item-bullet"></div><p>Spend more time in discovery. They need to arrive at their own pain before your solution means anything.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Do not rush to the pitch. The gap questions — what happens if this problem is still there in six months — are where urgency lives.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">📥</div><div class="card-title">Inbound — The Approach</div></div>
+    <div class="card-body">
+      <div>
+        <div class="section-label">Speed to Lead</div>
+        <div class="item"><div class="item-bullet"></div><p>Respond to every inbound inquiry within 5 minutes during business hours. Close rate drops significantly after the first hour.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>They were ready when they submitted. Your job is to meet that energy — not make them wait while you get organized.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Still Qualify — Do Not Assume</div>
+        <div class="item"><div class="item-bullet"></div><p>Inbound interest does not mean inbound fit. Confirm company profile, budget, and authority before booking a closer's call.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>A bad inbound lead on a closer's calendar is still a waste of time. The qualification standard does not change because they came in warm.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">On the Call</div>
+        <div class="item"><div class="item-bullet"></div><p>Discovery still runs — it just moves faster. They know the what. Your job is to understand their specific situation and make the solution personal to them.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Ask what prompted them to reach out. The answer tells you exactly what they are hoping to solve and where to focus the conversation.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Do not assume urgency just because they came inbound. Qualify timeline and decision process the same way you would with any prospect.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
