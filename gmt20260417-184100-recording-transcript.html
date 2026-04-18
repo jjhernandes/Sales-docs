@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Recap — Fernando Belmont</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f4f5;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+  .hero {
+    background: #1a1a1a;
+    padding: 64px 40px 56px;
+    text-align: center;
+  }
+  .hero-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 16px;
+  }
+  .hero-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .hero-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+  .hero-divider {
+    width: 40px;
+    height: 3px;
+    background: #ffffff;
+    margin: 24px auto 0;
+    border-radius: 2px;
+    opacity: 0.15;
+  }
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 36px 40px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .card-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .body-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #444;
+  }
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bullet-list li {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #444;
+    padding-left: 20px;
+    position: relative;
+  }
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .bullet-list li strong {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+  .action-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .action-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+    background: #1a1a1a;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .action-content {
+    flex: 1;
+  }
+  .action-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #444;
+    margin-bottom: 6px;
+  }
+  .action-text strong {
+    color: #1a1a1a;
+    font-weight: 600;
+  }
+  .action-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .tag-owner {
+    background: #f0f0f0;
+    color: #555;
+  }
+  .tag-jj {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  .tag-timing {
+    background: #f5f5f5;
+    color: #888;
+    border: 1px solid #e5e5e5;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 24px 0;
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 48px 24px 44px; }
+    .hero-name { font-size: 30px; }
+    .card { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="hero-label">Coaching Call Recap</p>
+  <h1 class="hero-name">Fernando Belmont</h1>
+  <p class="hero-meta">Coach: JJ Hernandez &nbsp;·&nbsp; Week 4 Check-In</p>
+  <div class="hero-divider"></div>
+</div>
+
+<div class="container">
+
+  <!-- WHO THEY ARE -->
+  <div class="card">
+    <p class="card-label">Who They Are</p>
+    <p class="body-text">
+      Fernando is a setter working on <strong>Alex Eubank's</strong> personal brand offer. He's in the early stages of building his sales process, currently operating from a handwritten framework based on a script from a top-performing setter on the team. He's enjoying the offer, finding it lower-pressure than previous roles, and using the environment to refine his fundamentals. The ICP is predominantly young people — many of whom are faith-motivated and already bought into Eubank's brand before the call begins.
+    </p>
+  </div>
+
+  <!-- GOALS & BOTTLENECKS -->
+  <div class="card">
+    <p class="card-label">Goals & Bottlenecks</p>
+    <p class="card-title">What he's working toward — and what's getting in the way</p>
+    <ul class="bullet-list">
+      <li><strong>Goal:</strong> Refine his setting process, internalize the framework at a deeper level, and consistently move prospects toward booked calls.</li>
+      <li><strong>Goal:</strong> Build real confidence in discovery — not just following steps, but understanding why each question matters.</li>
+      <li><strong>Bottleneck:</strong> Relies on asking explicit "consequence questions" (what happens if you do nothing?) rather than letting prospects surface their own pain through deeper discovery.</li>
+      <li><strong>Bottleneck:</strong> ICP often presents as low-pain — young people in tolerable situations — making urgency harder to manufacture. Fernando sometimes struggles to know when to push and when to sit in the discomfort of silence.</li>
+      <li><strong>Bottleneck:</strong> When prospects say "I don't really have challenges," Fernando challenges it but isn't sure if that's the right move or if there's a cleaner path to getting real answers.</li>
+      <li><strong>Bottleneck:</strong> Framework only exists on paper — no documented SOP or structured doc to reference, refine, or share.</li>
+    </ul>
+  </div>
+
+  <!-- KEY LESSONS -->
+  <div class="card">
+    <p class="card-label">Key Lessons</p>
+    <p class="card-title">What came out of this call</p>
+    <ul class="bullet-list">
+      <li><strong>Stay deeper in discovery — don't rush to consequence.</strong> One consequence question won't save the sale. What actually works is staying in discovery long enough that the prospect surfaces their own discrepancies. They'll feel the gap themselves without being pushed into it.</li>
+      <li><strong>Ask one level deeper, always.</strong> When someone says "grow it the right way," ask what that really means to them. That single follow-up unlocks emotion and clarity that a scripted question never will.</li>
+      <li><strong>Time gap = doubt.** Questions like "How long have you wanted this? Why haven't you done it yet?" open a door that wasn't there before. The prospect starts to question themselves — and that's where the shift happens.</li>
+      <li><strong>When they say "I don't know," they do know.</strong> A simple "Yes you do — just think about it" breaks through the surface-level deflection. Don't overcomplicate it. Give them permission to think rather than performing another question at them.</li>
+      <li><strong>Associated authority does the heavy lifting on this offer.</strong> Eubank's brand creates immediate credibility and trust. Fernando doesn't need to flex sales muscle — the brand has already built the frame. His job is to qualify, stay detached, and not get in his own way.</li>
+      <li><strong>Future-to-current is the right structure.</strong> Start with the goal state, then work back to where they are. This naturally creates the gap without forcing a consequence conversation. JJ confirmed this approach is strong and will be built into Fernando's documented framework.</li>
+    </ul>
+  </div>
+
+  <!-- ACTION STEPS -->
+  <div class="card">
+    <p class="card-label">Action Steps</p>
+    <p class="card-title">What happens next</p>
+    <ol class="action-list">
+
+      <li class="action-item">
+        <div class="action-number">1</div>
+        <div class="action-content">
+          <p class="action-text"><strong>JJ builds Fernando's SOP doc</strong> based on this call recording. Will include: framework structure (future-to-current), mental models for discovery, key questions with purpose explanations, and a 4-week roadmap. Fernando does not need to document the paper framework himself.</p>
+          <div class="action-tags">
+            <span class="tag tag-jj">Owner: JJ</span>
+            <span class="tag tag-timing">Before Monday's call</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="action-item">
+        <div class="action-number">2</div>
+        <div class="action-content">
+          <p class="action-text"><strong>Fernando focuses on extending discovery on every call.</strong> Goal is not to ask a consequence question — it's to stay curious one level deeper until the prospect names the gap themselves. Practice this on every call before Monday.</p>
+          <div class="action-tags">
+            <span class="tag tag-owner">Owner: Fernando</span>
+            <span class="tag tag-timing">Ongoing — every call this week</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="action-item">
+        <div class="action-number">3</div>
+        <div class="action-content">
+          <p class="action-text"><strong>When a prospect says "I don't really have challenges" — don't pivot away.</strong> Use the simple reframe: "Yes you do. Just think about it." Let silence do the work. Note which version gets the best response and bring examples to Monday's call.</p>
+          <div class="action-tags">
+            <span class="tag tag-owner">Owner: Fernando</span>
+            <span class="tag tag-timing">This week</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="action-item">
+        <div class="action-number">4</div>
+        <div class="action-content">
+          <p class="action-text"><strong>Introduce the time gap question</strong> — "How long have you been wanting this? Why haven't you been able to make it happen?" — into every discovery. Track how prospects respond and whether it opens the door to deeper self-reflection.</p>
+          <div class="action-tags">
+            <span class="tag tag-owner">Owner: Fernando</span>
+            <span class="tag tag-timing">Starting next call</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="action-item">
+        <div class="action-number">5</div>
+        <div class="action-content">
+          <p class="action-text"><strong>Monday call with JJ</strong> — review the new SOP doc, walk through Fernando's call notes from the week, and continue refining the discovery framework. JJ has rescheduled to Monday.</p>
+          <div class="action-tags">
+            <span class="tag tag-jj">Owner: JJ + Fernando</span>
+            <span class="tag tag-timing">Monday</span>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
