@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Management and Sales Process</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #f0f0f0; color: #1a1a1a; padding: 48px 20px 80px; }
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .hero { background: #1a1a1a; border-radius: 14px; padding: 52px 56px; }
+    .hero-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 14px; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+    .hero p { font-size: 15px; color: #777; line-height: 1.7; max-width: 540px; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; }
+    .card-header { padding: 24px 36px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 14px; }
+    .card-icon { width: 36px; height: 36px; background: #f4f4f4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .card-title { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; }
+    .card-body { padding: 28px 36px; display: flex; flex-direction: column; gap: 20px; }
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .item { display: flex; gap: 12px; align-items: flex-start; }
+    .item-bullet { width: 6px; height: 6px; background: #1a1a1a; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .item p { font-size: 13px; color: #444; line-height: 1.6; }
+    .item p strong { color: #1a1a1a; font-weight: 600; }
+    .divider { height: 1px; background: #f4f4f4; }
+    .funnel { display: flex; flex-direction: column; gap: 8px; }
+    .funnel-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; border: 1px solid #f0f0f0; border-radius: 10px; }
+    .step-num { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: #aaa; min-width: 24px; }
+    .step-content h3 { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .step-content p { font-size: 12px; color: #555; line-height: 1.5; }
+    .step-content .owner { font-size: 11px; color: #aaa; margin-top: 4px; font-style: italic; }
+    @media (max-width: 600px) { .hero { padding: 36px 24px; } .hero h1 { font-size: 26px; } .card-body { padding: 20px; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-label">Sales Operations</div>
+    <h1>Lead Management and Sales Process</h1>
+    <p>The full process from the moment a lead enters the pipeline to a signed contract — who owns what, and what happens at every step.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🗺️</div><div class="card-title">Full Process Overview</div></div>
+    <div class="card-body">
+      <div class="funnel">
+        <div class="funnel-step"><div class="step-num">01</div><div class="step-content"><h3>Lead Enters Pipeline</h3><p>Outbound prospect or inbound inquiry. Logged in CRM immediately. Assigned to active outreach.</p><p class="owner">Owner: SDR</p></div></div>
+        <div class="funnel-step"><div class="step-num">02</div><div class="step-content"><h3>Outreach and First Contact</h3><p>SDR runs the outbound sequence or responds to inbound within 5 minutes. Goal: earn a reply and confirm basic fit before moving forward.</p><p class="owner">Owner: SDR</p></div></div>
+        <div class="funnel-step"><div class="step-num">03</div><div class="step-content"><h3>Qualification</h3><p>Confirm ICP fit: company profile, budget authority, and genuine interest. All three required before a closer's calendar is touched.</p><p class="owner">Owner: SDR / Setter</p></div></div>
+        <div class="funnel-step"><div class="step-num">04</div><div class="step-content"><h3>Discovery Call Booked</h3><p>Call scheduled and confirmed. Pre-call automated sequence fires. Setter brief added to CRM contact record before the call.</p><p class="owner">Owner: Setter</p></div></div>
+        <div class="funnel-step"><div class="step-num">05</div><div class="step-content"><h3>Pre-Call Prep</h3><p>Closer reads the setter brief. Reviews the prospect's company and any relevant context. Prepares 2-3 discovery angles based on what is known.</p><p class="owner">Owner: Closer</p></div></div>
+        <div class="funnel-step"><div class="step-num">06</div><div class="step-content"><h3>Discovery Call</h3><p>Closer runs the call using the SIGNAL framework. Call recorded. Outcome and key notes logged in CRM same day. Follow-up email sent within 2 hours.</p><p class="owner">Owner: Closer</p></div></div>
+        <div class="funnel-step"><div class="step-num">07</div><div class="step-content"><h3>Post-Call Sequence</h3><p>Automated follow-up sequence fires. Closer monitors for replies and responds to any engagement same day.</p><p class="owner">Owner: Automation + Closer on replies</p></div></div>
+        <div class="funnel-step"><div class="step-num">08</div><div class="step-content"><h3>Close Call Scheduled</h3><p>Decision call booked. Closer confirms attendance and prepares objection responses. Pre-call sequence fires.</p><p class="owner">Owner: Closer</p></div></div>
+        <div class="funnel-step"><div class="step-num">09</div><div class="step-content"><h3>Close Call</h3><p>Closer presents investment, anchors on value, uses entry offer if needed. Never ends the call without a confirmed next step.</p><p class="owner">Owner: Closer</p></div></div>
+        <div class="funnel-step"><div class="step-num">10</div><div class="step-content"><h3>Contract and Onboarding</h3><p>Contract sent same day. Unsigned contracts followed up within 24 hours. Once signed: notify manager, trigger onboarding, log Closed Won in CRM.</p><p class="owner">Owner: Closer + Manager</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🚦</div><div class="card-title">Lead Qualification Standards</div></div>
+    <div class="card-body">
+      <div>
+        <div class="section-label">Must Have — All Three</div>
+        <div class="item"><div class="item-bullet"></div><p>Company matches your ideal client profile (ICP) in terms of size, industry, and stage</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Contact owns or meaningfully influences the budget for the type of solution you sell</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Company is actively investing in solving the problem your offer addresses — not just casually curious</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Strong Fit Signals</div>
+        <div class="item"><div class="item-bullet"></div><p>Has tried other solutions and was disappointed — they know what bad looks like</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Has a specific event or deadline creating urgency (product launch, funding round, leadership change)</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Budget authority is clear — decision-maker is already in the conversation</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Can articulate the problem in their own words — they have already thought about it</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Do Not Book</div>
+        <div class="item"><div class="item-bullet"></div><p>Company does not fit your ICP — different industry, wrong size, wrong stage</p></div>
+        <div class="item"><div class="item-bullet"></div><p>No clear decision-maker involved or accessible</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Looking for a one-time fix when your model requires ongoing commitment</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Cannot invest at your price point — qualify this early, not on the close call</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">⏱️</div><div class="card-title">Speed and Follow-Up Standards</div></div>
+    <div class="card-body">
+      <div class="item"><div class="item-bullet"></div><p><strong>Inbound inquiries:</strong> Responded to within 5 minutes during business hours.</p></div>
+      <div class="item"><div class="item-bullet"></div><p><strong>New outbound leads:</strong> First outreach within 24 hours of entering the CRM.</p></div>
+      <div class="item"><div class="item-bullet"></div><p><strong>Post-call follow-up:</strong> Sent within 2 hours of the call ending, every time.</p></div>
+      <div class="item"><div class="item-bullet"></div><p><strong>Unsigned contracts:</strong> Followed up within 24 hours. Momentum dies fast after a call.</p></div>
+      <div class="item"><div class="item-bullet"></div><p><strong>Deals with no activity:</strong> Any deal in the same stage for 7+ days gets flagged. Move it forward or close it out.</p></div>
+      <div class="item"><div class="item-bullet"></div><p><strong>Nurture leads:</strong> 60-day follow-up task set before moving on. Do not let qualified prospects disappear.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🔁</div><div class="card-title">No-Show and Ghosting Protocol</div></div>
+    <div class="card-body">
+      <div>
+        <div class="section-label">No-Show on a Booked Call</div>
+        <div class="item"><div class="item-bullet"></div><p><strong>At 5 minutes:</strong> Send a quick message — "Hey [Name], I'm standing by. Still good to connect today?"</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>At 15 minutes:</strong> Send a reschedule link via email and a secondary channel.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>24 hours later:</strong> One more outreach attempt with a direct ask to reschedule.</p></div>
+        <div class="item"><div class="item-bullet"></div><p><strong>After 2 attempts with no response:</strong> Move to Nurture. Set a 60-day re-engage task. Do not chase further.</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Going Dark After a Call</div>
+        <div class="item"><div class="item-bullet"></div><p>Let the automated post-call sequence run. It exists specifically for this scenario.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>After the breakup message with no response: move to Nurture. Do not burn the relationship by over-chasing.</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Log the outcome in the CRM with a specific reason — "No response after full follow-up sequence" is valid data. Use it.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
