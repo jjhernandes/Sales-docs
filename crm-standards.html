@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard SOP for CRM</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #f0f0f0; color: #1a1a1a; padding: 48px 20px 80px; }
+    .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .hero { background: #1a1a1a; border-radius: 14px; padding: 52px 56px; }
+    .hero-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 14px; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+    .hero p { font-size: 15px; color: #777; line-height: 1.7; max-width: 540px; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; }
+    .card-header { padding: 24px 36px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 14px; }
+    .card-icon { width: 36px; height: 36px; background: #f4f4f4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .card-title { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; }
+    .card-body { padding: 28px 36px; display: flex; flex-direction: column; gap: 20px; }
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+    .item { display: flex; gap: 12px; align-items: flex-start; }
+    .item-bullet { width: 6px; height: 6px; background: #1a1a1a; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .item p { font-size: 13px; color: #444; line-height: 1.6; }
+    .item p strong { color: #1a1a1a; font-weight: 600; }
+    .divider { height: 1px; background: #f4f4f4; }
+    .stage-list { display: flex; flex-direction: column; }
+    .stage { display: flex; gap: 20px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #f4f4f4; }
+    .stage:last-child { border-bottom: none; }
+    .stage-num { width: 28px; height: 28px; background: #1a1a1a; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .stage-content h3 { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .stage-content p { font-size: 12px; color: #555; line-height: 1.5; }
+    .stage-content .owner { font-size: 11px; color: #aaa; margin-top: 4px; }
+    @media (max-width: 600px) { .hero { padding: 36px 24px; } .hero h1 { font-size: 26px; } .card-body { padding: 20px; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-label">Sales Operations</div>
+    <h1>Standard SOP for CRM</h1>
+    <p>The CRM is the single source of truth for every deal. This covers exactly what goes in, when it goes in, and what the standards are for every rep.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">📌</div><div class="card-title">The Standard</div></div>
+    <div class="card-body">
+      <div class="item"><div class="item-bullet"></div><p><strong>If it is not in the CRM, it does not exist.</strong> Every call, every touchpoint, every stage change is logged the same day it occurs — no exceptions.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>The CRM is how the manager sees the pipeline. If your data is not current, leadership is managing blind — and so are you.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>CRM compliance is not optional. Reps who consistently fail to update will be addressed directly — first in a 1on1, then formally if the behavior continues.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🗂️</div><div class="card-title">Pipeline Stages</div></div>
+    <div class="card-body">
+      <div class="stage-list">
+        <div class="stage"><div class="stage-num">1</div><div class="stage-content"><h3>New Lead</h3><p>Lead entered pipeline from outbound, referral, or inbound. Not yet contacted.</p><p class="owner">Owner: SDR — Action: First outreach within 24 hours</p></div></div>
+        <div class="stage"><div class="stage-num">2</div><div class="stage-content"><h3>Contacted</h3><p>Outreach has been sent. Awaiting a response.</p><p class="owner">Owner: SDR — Action: Follow up per sequence. Log every touchpoint same day.</p></div></div>
+        <div class="stage"><div class="stage-num">3</div><div class="stage-content"><h3>Qualified</h3><p>Lead responded and has been confirmed as a fit against ICP criteria.</p><p class="owner">Owner: SDR — Action: Book discovery call. Brief closer before the call.</p></div></div>
+        <div class="stage"><div class="stage-num">4</div><div class="stage-content"><h3>Discovery Call Scheduled</h3><p>Call is confirmed on the calendar.</p><p class="owner">Owner: Setter — Action: Confirm 24 hours before. Complete closer brief.</p></div></div>
+        <div class="stage"><div class="stage-num">5</div><div class="stage-content"><h3>Discovery Call Completed</h3><p>Call happened. Notes and recording logged.</p><p class="owner">Owner: Closer — Action: Send follow-up same day. Log call outcome and next step.</p></div></div>
+        <div class="stage"><div class="stage-num">6</div><div class="stage-content"><h3>Proposal Sent</h3><p>Scope and investment have been shared with the prospect.</p><p class="owner">Owner: Closer — Action: Follow up within 48 hours if no response.</p></div></div>
+        <div class="stage"><div class="stage-num">7</div><div class="stage-content"><h3>Close Call Scheduled</h3><p>Final decision call is on the calendar.</p><p class="owner">Owner: Closer — Action: Confirm attendance. Prepare objection responses.</p></div></div>
+        <div class="stage"><div class="stage-num">8</div><div class="stage-content"><h3>Closed Won</h3><p>Contract signed and payment confirmed.</p><p class="owner">Owner: Closer — Action: Notify manager. Trigger onboarding. Log deal value and close date.</p></div></div>
+        <div class="stage"><div class="stage-num">9</div><div class="stage-content"><h3>Closed Lost</h3><p>Prospect did not move forward. Loss reason required.</p><p class="owner">Owner: Closer — Action: Log specific loss reason. Add to Nurture if potential future fit.</p></div></div>
+        <div class="stage"><div class="stage-num">10</div><div class="stage-content"><h3>Nurture</h3><p>Not ready now. Revisit in 60-90 days.</p><p class="owner">Owner: SDR — Action: Set a follow-up task for 60 days out before moving on.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">✅</div><div class="card-title">Non-Negotiables</div></div>
+    <div class="card-body">
+      <div>
+        <div class="section-label">Every Contact Record Must Have</div>
+        <div class="item"><div class="item-bullet"></div><p>Company record associated and accurate</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Contact title and LinkedIn URL</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Lead source (outbound, referral, or inbound)</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Last activity date and a next step task with a due date</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Every Call Log Must Include</div>
+        <div class="item"><div class="item-bullet"></div><p>Date and outcome (moved forward, no-show, closed, lost)</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Key notes — pain points, objections raised, what resonated</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Confirmed next step with a specific date</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Link to the call recording</p></div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="section-label">Deal Rules</div>
+        <div class="item"><div class="item-bullet"></div><p>No deal sits in the same stage for more than 7 days without a logged activity</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Deal value must be updated every time scope changes</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Every Closed Lost deal must have a specific loss reason — no blanks</p></div>
+        <div class="item"><div class="item-bullet"></div><p>Do not mark a deal Won until the contract is signed and payment is confirmed</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-icon">🔴</div><div class="card-title">What Bad CRM Data Costs You</div></div>
+    <div class="card-body">
+      <div class="item"><div class="item-bullet"></div><p>Management cannot see which deals need attention — good opportunities fall through the cracks.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>You cannot calculate a real close rate — so you do not know if you are actually improving.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>You cannot identify loss patterns — so you keep losing deals for the same fixable reason.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>Automation sequences may not fire correctly if pipeline stages are not synced — prospects fall out of follow-up.</p></div>
+      <div class="item"><div class="item-bullet"></div><p>It signals to the team that process is optional. That standard does not exist here.</p></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
