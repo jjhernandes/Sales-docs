@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Call Structure Basics</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1d212b;
+      --text: #eef2f7;
+      --muted: #a9b3c2;
+      --line: #2b3240;
+      --accent: #7dd3fc;
+      --accent-2: #93c5fd;
+      --good: #86efac;
+      --warn: #fcd34d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #0b0e13, var(--bg));
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(125,211,252,0.10), rgba(147,197,253,0.04));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .toc,
+    .card,
+    .phase,
+    .footer-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    .toc {
+      position: sticky;
+      top: 20px;
+      padding: 18px;
+    }
+
+    .toc h2,
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .toc a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      background: transparent;
+      border: 1px solid transparent;
+      font-size: 14px;
+    }
+
+    .toc a:hover {
+      background: var(--panel-2);
+      border-color: var(--line);
+    }
+
+    .main {
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .mini h3,
+    .phase h3,
+    .qa h4,
+    .example h4,
+    .mistakes h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .mini p,
+    .phase p,
+    li,
+    .footer-box p {
+      color: var(--muted);
+    }
+
+    .phase {
+      padding: 22px;
+    }
+
+    .phase-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(125, 211, 252, 0.10);
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .phase-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .qa,
+    .example,
+    .mistakes {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    ul {
+      margin: 10px 0 0 18px;
+      padding: 0;
+    }
+
+    li { margin-bottom: 8px; }
+
+    .quote {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--accent-2);
+      background: rgba(147,197,253,0.06);
+      border-radius: 0 14px 14px 0;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .callout {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(134,239,172,0.08), rgba(252,211,77,0.06));
+    }
+
+    .callout strong { color: var(--good); }
+
+    .footer-box {
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    .footer-box ul { margin-top: 8px; }
+
+    code.inline {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      padding: 3px 8px;
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 920px) {
+      .grid,
+      .phase-grid,
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toc {
+        position: static;
+      }
+
+      .phase-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Sales.io • Call Structure Basics</div>
+      <h1>Run cleaner calls. Control the conversation. Close with clarity.</h1>
+      <p>This is a simple, practical framework for discovery and closing calls. Use it to stay structured without sounding scripted.</p>
+    </section>
+
+    <div class="grid">
+      <aside class="toc">
+        <h2>On this page</h2>
+        <a href="#principles">Core principles</a>
+        <a href="#phase1">1. Open strong</a>
+        <a href="#phase2">2. Set the frame</a>
+        <a href="#phase3">3. Diagnose deeply</a>
+        <a href="#phase4">4. Tie pain to cost</a>
+        <a href="#phase5">5. Present simply</a>
+        <a href="#phase6">6. Handle objections</a>
+        <a href="#phase7">7. Close cleanly</a>
+        <a href="#cheatsheet">Quick cheat sheet</a>
+      </aside>
+
+      <main class="main">
+        <section id="principles" class="card">
+          <div class="section-title">Core principles</div>
+          <div class="intro-grid">
+            <div class="mini">
+              <h3>Diagnose before you prescribe</h3>
+              <p>Most reps rush into pitching. Strong reps earn the right to present by understanding the buyer’s current state, desired state, blockers, and urgency first.</p>
+            </div>
+            <div class="mini">
+              <h3>Control without overpowering</h3>
+              <p>Good frame control feels calm, not pushy. Lead the call with confidence, but make the prospect feel understood and involved.</p>
+            </div>
+            <div class="mini">
+              <h3>Questions create leverage</h3>
+              <p>The best discovery questions do not just gather facts. They make the prospect think, feel the gap, and verbalize why change matters now.</p>
+            </div>
+            <div class="mini">
+              <h3>Clarity closes deals</h3>
+              <p>Confused prospects stall. Your job is to make the path, the problem, and the next step feel obvious.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="phase1" class="phase">
+          <div class="phase-head">
+            <h3>1. Open strong</h3>
+            <span class="badge">Goal: lower friction fast</span>
+          </div>
+          <p>Your first minute sets the emotional tone. Sound composed. Do not ramble. Let them feel they are in capable hands.</p>
+          <div class="phase-grid">
+            <div class="qa">
+              <h4>What to do</h4>
+              <ul>
+                <li>Thank them for the time.</li>
+                <li>Set a relaxed, confident tone.</li>
+                <li>Confirm the time boundary.</li>
+                <li>Transition quickly into purpose.</li>
+              </ul>
+              <div class="quote">“Glad we could connect. We’ve got about 30 minutes. My goal is to understand what’s going on, see if there’s a real fit, and if there is, walk you through what I’d recommend. Sound fair?”</div>
+            </div>
+            <div class="mistakes">
+              <h4>Common mistake</h4>
+              <p>Over-explaining yourself at the start. The opening is not where you prove expertise. It is where you create safety and control.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="phase2" class="phase">
+          <div class="phase-head">
+            <h3>2. Set the frame</h3>
+            <span class="badge">Goal: establish process</span>
+          </div>
+          <p>Frame control is simply telling the prospect how the conversation will work so the call does not drift into randomness.</p>
+          <div class="phase-grid">
+            <div class="qa">
+              <h4>What to say</h4>
+              <ul>
+                <li>Explain the flow of the call.</li>
+                <li>Tell them you will ask direct questions.</li>
+                <li>Give yourself permission to challenge vague answers.</li>
+              </ul>
+              <div class="quote">“I’m going to ask a few direct questions so I can understand the real situation, not just the surface-level version. Then if it makes sense, I’ll show you what I’d do.”</div>
+            </div>
+            <div class="example">
+              <h4>Why it matters</h4>
+              <p>When you set the frame, you become the guide. Without a frame, the prospect unconsciously takes control and the call becomes reactive.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="phase3" class="phase">
+          <div class="phase-head">
+            <h3>3. Diagnose deeply</h3>
+            <span class="badge">Goal: uncover truth</span>
+          </div>
+          <p>This is the heart of the call. Your discovery should uncover current reality, desired outcome, emotional drivers, failed attempts, and decision dynamics.</p>
+          <div class="phase-grid">
+            <div class="qa">
+              <h4>Core discovery lanes</h4>
+              <ul>
+                <li><strong>Current state:</strong> “Walk me through what’s happening today.”</li>
+                <li><strong>Desired state:</strong> “What are you actually trying to accomplish?”</li>
+                <li><strong>Gap:</strong> “What’s making that hard right now?”</li>
+                <li><strong>Impact:</strong> “What is this costing you?”</li>
+                <li><strong>Past action:</strong> “What have you already tried?”</li>
+                <li><strong>Urgency:</strong> “Why solve this now instead of later?”</li>
+              </ul>
+            </div>
+            <div class="example">
+              <h4>Coaching note</h4>
+              <p>Do not machine-gun questions. Ask, listen, mirror their last few words, and pause. Prospects often reveal the real issue right after the pause.</p>
+              <div class="quote">“Say more about that.”</div>
+            </div>
+          </div>
+          <div class="callout"><strong>Rule:</strong> If the prospect has not clearly verbalized the problem in their own words, you are not ready to pitch.</div>
+        </section>
+
+        <section id="phase4" class="phase">
+          <div class="phase-head">
+            <h3>4. Tie pain to cost</h3>
+            <span class="badge">Goal: create urgency</span>
+          </div>
+          <p>Buyers move when the pain feels expensive enough. Help them connect the issue to money, time, energy, missed growth, stress, or identity.</p>
+          <div class="phase-grid">
+            <div class="qa">
+              <h4>Questions that deepen stakes</h4>
+              <ul>
+                <li>“How long has this been going on?”</li>
+                <li>“What happens if this stays the same for another 6 months?”</li>
+                <li>“What’s the downstream effect on the business or your team?”</li>
+                <li>“How frustrating is this on a day-to-day basis?”</li>
+              </ul>
+            </div>
+            <div class="mistakes">
+              <h4>Common mistake</h4>
+              <p>Accepting mild pain. “It’s been annoying” is not enough. You need consequence. Consequence creates motion.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="phase5" class="phase">
+          <div class="phase-head">
+            <h3>5. Present simply</h3>
+            <span class="badge">Goal: connect solution to problem</span>
+          </div>
+          <p>Your presentation should feel like a natural continuation of discovery, not a switch into a canned demo. Only show what matters to their problem.</p>
+          <div class="phase-grid">
+            <div class="qa">
+              <h4>Simple presentation structure</h4>
+              <ul>
+                <li>Restate the problem.</li>
+                <li>Restate the desired outcome.</li>
+                <li>Show your mechanism.</li>
+                <li>Tie features to outcomes, not features to features.</li>
+              </ul>
+              <div class="quote">“Based on what you said, the real problem isn’t just lead volume. It’s that your reps are working bad opportunities and the process breaks after first touch. Here’s how we fix that.”</div>
+            </div>
+            <div class="example">
+              <h4>Coaching note</h4>
+              <p>If you cannot connect a slide, feature, or explanation directly to something the prospect said, cut it.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="phase6" class="phase">
+          <div class="phase-head">
+            <h3>6. Handle objections</h3>
+            <span class="badge">Goal: resolve the real concern</span>
+          </div>
+          <p>Objections are often incomplete truths. Do not swat them away. Slow down, isolate, and understand what is actually underneath the resistance.</p>
+          <div class="phase-grid">
+            <div class="qa">
+              <h4>Objection flow</h4>
+              <ul>
+                <li>Acknowledge: “Totally fair.”</li>
+                <li>Clarify: “When you say price, do you mean budget, priority, or uncertainty about ROI?”</li>
+                <li>Isolate: “Other than that, does this solve what you came on the call for?”</li>
+                <li>Respond: address the actual issue.</li>
+              </ul>
+            </div>
+            <div class="example">
+              <h4>Useful line</h4>
+              <div class="quote">“Help me understand what feels risky here.”</div>
+              <p>That question often gets you to the truth faster than arguing logic.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="phase7" class="phase">
+          <div class="phase-head">
+            <h3>7. Close cleanly</h3>
+            <span class="badge">Goal: secure a real next step</span>
+          </div>
+          <p>The close should feel like the logical outcome of the call, not a surprise attack. If the call was run well, the close becomes a decision, not a push.</p>
+          <div class="phase-grid">
+            <div class="qa">
+              <h4>Closing language</h4>
+              <ul>
+                <li>“Based on everything we talked through, does this feel like the right next move?”</li>
+                <li>“Do you want to move forward and get this in motion?”</li>
+                <li>“What do you need to feel comfortable making a decision today?”</li>
+              </ul>
+            </div>
+            <div class="mistakes">
+              <h4>Common mistake</h4>
+              <p>Ending with vague softness like <code class="inline">let me know what you think</code>. Strong reps always leave the call with a defined outcome: yes, no, or a specific next step.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="cheatsheet" class="footer-box">
+          <div class="section-title">Quick cheat sheet</div>
+          <p><strong>Basic call flow:</strong></p>
+          <ul>
+            <li>Open and lower tension</li>
+            <li>Set the frame</li>
+            <li>Diagnose the problem deeply</li>
+            <li>Expand the consequences</li>
+            <li>Present the solution simply</li>
+            <li>Handle objections by clarifying first</li>
+            <li>Close with a direct next step</li>
+          </ul>
+          <p style="margin-top:16px;"><strong>Simple reminder:</strong> Slow the call down. Ask better questions. Make the problem real. Then make the decision easy.</p>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
