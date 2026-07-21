@@ -1,0 +1,455 @@
+
+<title>Coaching Recap — Pablo Humerez · Jul 21</title>
+<style>
+  :root {
+    --bg: #090908;
+    --surface: #111110;
+    --surface-2: #1a1916;
+    --accent: #e2cfa8;
+    --accent-soft: #f0e4c8;
+    --accent-dim: rgba(226,207,168,.07);
+    --accent-border: rgba(226,207,168,.14);
+    --text: #f0ece4;
+    --text-muted: #8a8475;
+    --text-faint: #3e3b30;
+    --border: #201f18;
+    --check: #7dcf95;
+    --check-dim: rgba(125,207,149,.08);
+    --mono: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #faf8f2; --surface: #f0ece0; --surface-2: #e4dece;
+      --accent: #8a6d3a; --accent-soft: #6b5228;
+      --accent-dim: rgba(138,109,58,.07); --accent-border: rgba(138,109,58,.2);
+      --text: #1a1914; --text-muted: #6a6450; --text-faint: #c0b898;
+      --border: #ddd8c8; --check: #2a7a45; --check-dim: rgba(42,122,69,.07);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#090908;--surface:#111110;--surface-2:#1a1916;
+    --accent:#e2cfa8;--accent-soft:#f0e4c8;
+    --accent-dim:rgba(226,207,168,.07);--accent-border:rgba(226,207,168,.14);
+    --text:#f0ece4;--text-muted:#8a8475;--text-faint:#3e3b30;
+    --border:#201f18;--check:#7dcf95;--check-dim:rgba(125,207,149,.08);
+  }
+  :root[data-theme="light"] {
+    --bg:#faf8f2;--surface:#f0ece0;--surface-2:#e4dece;
+    --accent:#8a6d3a;--accent-soft:#6b5228;
+    --accent-dim:rgba(138,109,58,.07);--accent-border:rgba(138,109,58,.2);
+    --text:#1a1914;--text-muted:#6a6450;--text-faint:#c0b898;
+    --border:#ddd8c8;--check:#2a7a45;--check-dim:rgba(42,122,69,.07);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:16px;scroll-behavior:smooth;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,'Segoe UI',system-ui,sans-serif;
+    font-size:.9375rem;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .doc-header{
+    max-width:760px;margin:0 auto;
+    padding:3rem 2rem 2.5rem;
+    border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:.6rem;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:.875rem;
+  }
+  .doc-title{
+    font-size:1.875rem;font-weight:700;
+    letter-spacing:-.03em;line-height:1.2;
+    color:var(--text);margin-bottom:.25rem;
+  }
+  .doc-sub{color:var(--text-muted);font-size:.9375rem;margin-top:.25rem;}
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.125rem;
+  }
+  .meta-chip{
+    display:flex;align-items:center;gap:.4rem;
+    font-family:var(--mono);font-size:.6875rem;
+    color:var(--text-muted);background:var(--surface);
+    border:1px solid var(--border);border-radius:2px;padding:.25rem .625rem;
+  }
+  .meta-chip-dot{
+    width:4px;height:4px;border-radius:50%;
+    background:var(--accent);flex-shrink:0;
+  }
+
+  main{max-width:760px;margin:0 auto;padding:0 2rem 5rem;}
+
+  .section{padding:2.25rem 0 1.75rem;border-bottom:1px solid var(--border);}
+  .section:last-child{border-bottom:none;}
+  .sec-eyebrow{
+    font-family:var(--mono);font-size:.6rem;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--text-faint);margin-bottom:.75rem;
+  }
+  .sec-title{
+    font-size:1.0625rem;font-weight:650;
+    color:var(--text);letter-spacing:-.015em;margin-bottom:1.25rem;
+  }
+
+  /* ── Snapshot cards ── */
+  .snap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;}
+  .snap-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:3px;overflow:hidden;
+  }
+  .snap-head{
+    padding:.5rem .75rem;background:var(--surface-2);
+    border-bottom:1px solid var(--border);
+    font-family:var(--mono);font-size:.575rem;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--text-faint);
+  }
+  .snap-val{
+    padding:.625rem .75rem;font-size:.875rem;color:var(--text-muted);
+    line-height:1.5;
+  }
+  .snap-val strong{color:var(--text);font-weight:600;}
+
+  /* ── Video embed ── */
+  .video-wrap{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:6px;overflow:hidden;
+  }
+  .video-frame-slot{
+    aspect-ratio:16/9;width:100%;background:var(--surface-2);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;
+  }
+  .video-frame-slot .vf-icon{font-size:1.5rem;opacity:.5;}
+  .video-frame-slot .vf-title{font-size:.875rem;font-weight:650;color:var(--text);}
+  .video-frame-slot .vf-desc{font-size:.8125rem;color:var(--text-muted);max-width:40ch;line-height:1.6;}
+  .video-wrap iframe,.video-wrap video{width:100%;aspect-ratio:16/9;display:block;border:none;}
+  .video-meta{padding:.75rem 1rem;font-size:.75rem;color:var(--text-muted);border-top:1px solid var(--border);}
+
+  /* ── Coaching moments ── */
+  .moment{
+    margin-bottom:.625rem;
+    border:1px solid var(--border);border-radius:3px;overflow:hidden;
+  }
+  .moment-head{
+    display:flex;align-items:flex-start;gap:.875rem;
+    padding:.9375rem 1.125rem;background:var(--surface-2);
+    border-bottom:1px solid var(--border);
+  }
+  .moment-num{
+    font-family:var(--mono);font-size:.625rem;
+    letter-spacing:.08em;color:var(--accent);opacity:.55;
+    flex-shrink:0;margin-top:.15rem;min-width:1.5rem;
+  }
+  .moment-title{
+    font-size:.9375rem;font-weight:650;
+    color:var(--text);letter-spacing:-.01em;line-height:1.3;
+  }
+  .moment-body{
+    padding:.9375rem 1.125rem;background:var(--surface);
+  }
+  .moment-p{
+    font-size:.875rem;color:var(--text-muted);
+    line-height:1.65;margin-bottom:.625rem;
+  }
+  .moment-p:last-child{margin-bottom:0;}
+  .moment-p strong{color:var(--text);font-weight:600;}
+
+  .quote-block{
+    margin:.75rem 0;padding:.75rem 1rem;
+    background:var(--accent-dim);border-left:2px solid var(--accent);
+    border-radius:0 2px 2px 0;
+    font-size:.875rem;color:var(--accent-soft);
+    line-height:1.6;font-style:italic;
+  }
+  .quote-attr{
+    font-family:var(--mono);font-size:.575rem;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--text-faint);margin-top:.35rem;font-style:normal;
+  }
+
+  .callout{
+    padding:.75rem 1rem;
+    background:var(--accent-dim);border:1px solid var(--accent-border);
+    border-radius:2px;font-size:.875rem;color:var(--text-muted);line-height:1.6;
+    margin-top:.875rem;
+  }
+  .callout strong{color:var(--accent-soft);}
+
+  /* ── Roleplay transcript ── */
+  .roleplay-turn{display:flex;gap:.75rem;padding:.5rem 0;}
+  .roleplay-role{
+    font-family:var(--mono);font-size:.625rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--accent);opacity:.7;min-width:4.5rem;flex-shrink:0;padding-top:.1rem;
+  }
+  .roleplay-line{font-size:.8125rem;color:var(--text-muted);line-height:1.6;}
+  .roleplay-line em{color:var(--text-faint);font-style:italic;}
+
+  /* ── Catches ── */
+  .catch-list{display:flex;flex-direction:column;gap:.375rem;}
+  .catch-item{
+    display:flex;align-items:flex-start;gap:.75rem;
+    padding:.75rem .875rem;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:3px;
+  }
+  .catch-icon{
+    font-size:.75rem;color:var(--check);flex-shrink:0;
+    margin-top:.2rem;font-family:var(--mono);
+    letter-spacing:.04em;
+  }
+  .catch-text{font-size:.875rem;color:var(--text-muted);line-height:1.55;}
+  .catch-text strong{color:var(--text);}
+
+  /* ── Action items ── */
+  .action-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+  .action-item{
+    display:flex;align-items:flex-start;gap:.75rem;
+    padding:.75rem .875rem;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:3px;font-size:.875rem;color:var(--text-muted);line-height:1.5;
+  }
+  .action-owner{
+    font-family:var(--mono);font-size:.6rem;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);opacity:.7;flex-shrink:0;
+    margin-top:.15rem;min-width:3.5rem;
+  }
+
+  .doc-footer{
+    max-width:760px;margin:0 auto;
+    padding:1.5rem 2rem;border-top:1px solid var(--border);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+    font-family:var(--mono);font-size:.575rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);
+  }
+
+  @media(max-width:600px){
+    .doc-header,main{padding-left:1.25rem;padding-right:1.25rem;}
+    .doc-title{font-size:1.5rem;}
+    .snap-grid,.action-grid{grid-template-columns:1fr;}
+    .roleplay-turn{flex-direction:column;gap:.15rem;}
+  }
+</style>
+
+<div class="doc-header">
+  <div class="eyebrow">Sales.io — Coaching Recap</div>
+  <h1 class="doc-title">Pablo Humerez</h1>
+  <div class="doc-sub">1-on-1 Call Review — Tristan Steckler's Financial Advisory Closers</div>
+  <div class="meta-row">
+    <div class="meta-chip"><div class="meta-chip-dot"></div>July 21, 2026</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Real breakthrough session</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Live roleplay included</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- Session recording -->
+  <div class="section">
+    <div class="sec-eyebrow">Recording</div>
+    <h2 class="sec-title">Session video</h2>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/XGRExiKp9J4" title="Pablo Humerez — Coaching Call, Jul 21" allowfullscreen loading="lazy"></iframe>
+      <div class="video-meta">Recorded session — Jul 21, 2026</div>
+    </div>
+  </div>
+
+  <!-- Snapshot -->
+  <div class="section">
+    <div class="sec-eyebrow">Context</div>
+    <h2 class="sec-title">Where Pablo is</h2>
+    <div class="snap-grid">
+      <div class="snap-card">
+        <div class="snap-head">Open thread</div>
+        <div class="snap-val">A couple in their 60s — wife bought in, husband not. She'd separately messaged the setter asking about a competing lead magnet ("Finance to Freedom" challenge) nobody followed up on, then declined the $10K offer.</div>
+      </div>
+      <div class="snap-card">
+        <div class="snap-head">Core struggle</div>
+        <div class="snap-val">Losing control of calls when prospects give a wall of information mixing <strong>current state, goals, and emotion</strong> all at once. Didn't know which thread to pull first.</div>
+      </div>
+      <div class="snap-card">
+        <div class="snap-head">Breakthrough</div>
+        <div class="snap-val">Realized he was blending two frameworks (goal-first "North Star" vs. problem-first) instead of committing to one — which is what made calls feel unpredictable.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stalled deal -->
+  <div class="section">
+    <div class="sec-eyebrow">Live Deal Strategy</div>
+    <h2 class="sec-title">Re-engaging the stalled couple</h2>
+    <div class="moment">
+      <div class="moment-head">
+        <div class="moment-num">→</div>
+        <div class="moment-title">What actually happened</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-p">Wife was bought in on the call itself — Pablo heard her say, under her breath, something like "it is just sitting there," while the husband kept his arms crossed and said only "we need further conversation." Separately, she'd messaged the setter asking what a competing lead magnet ("Finance to Freedom") was — nobody answered her — then sent a decline email citing minimal debt, being in their 60s, and not wanting to spend $10K on top of investing.</div>
+        <div class="moment-p">JJ's read: she doesn't know that Pablo is aware she asked about the other program, and it never got resolved. That's the opening — not to chase the decline, but to close the loop she's still waiting on.</div>
+      </div>
+    </div>
+    <div class="moment">
+      <div class="moment-head">
+        <div class="moment-num">→</div>
+        <div class="moment-title">The follow-up approach</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-p">Reference what she asked about directly, offer to close that loop, and use it as the reason to get back on a call — rather than letting the decline stand unanswered.</div>
+        <div class="quote-block">
+          "I know you had asked about the Finance to Freedom program — if it's all right with you, we can jump back on and talk about what that looks like, make sure it's the best fit. And if it's not, I'll help you get started with what we discussed instead."
+          <div class="quote-attr">JJ Hernandez — suggested approach</div>
+        </div>
+        <div class="moment-p">JJ's broader point: don't let it die from silence. "Doing nothing is not better than doing something." If there's real conviction the $10K program is what she needs — and Pablo confirmed it is, given her stated goals — it's worth one more attempt before moving on.</div>
+      </div>
+    </div>
+    <div class="moment">
+      <div class="moment-head">
+        <div class="moment-num">→</div>
+        <div class="moment-title">Breaking the "fourth wall" for the husband</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-p">Both partners have to be bought in — one can't carry the other. The technique: name the asymmetry directly instead of pretending both were equally on board.</div>
+        <div class="quote-block">
+          "Sarah, I see you're there. Todd, I see you're not. What's missing for you? What would you need to know for this to be a yes for you, just like it is for Sarah?"
+          <div class="quote-attr">JJ Hernandez</div>
+        </div>
+        <div class="moment-p">This turns it from "you two vs. the decision" into Pablo and Sarah gently bringing Todd on board together — rather than Pablo arguing against both of them at once.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coaching moments -->
+  <div class="section">
+    <div class="sec-eyebrow">Coaching Moments</div>
+    <h2 class="sec-title">What was worked through</h2>
+
+    <div class="moment">
+      <div class="moment-head">
+        <div class="moment-num">01</div>
+        <div class="moment-title">Know the lead source before the call</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-p">Pablo didn't know whether a given lead came from a paid ad, organic content, or a lead magnet — and there's no SOP documenting it. JJ's point: this materially changes how you approach the call. A retargeting ad, a direct-book ad, and an organic lead-magnet opt-in are three different conversations with three different levels of buying intent already built in.</div>
+        <div class="quote-block">
+          "You're selling the person, not the product. If we're thinking about the customer journey, we need to know where they came from."
+          <div class="quote-attr">JJ Hernandez</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="moment">
+      <div class="moment-head">
+        <div class="moment-num">02</div>
+        <div class="moment-title">Pick one framework and commit — stop blending two</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-p">Pablo had been mixing two approaches: a "goals first" open (from a Loom Tristan's team lead recorded) and a "biggest challenge first" open (from Tristan's actual script), both feeding into a Situation → Problem → Solution → Goal/Future Pace/Consequence structure. Both openers technically work — the issue was that prospects would respond to either one with a flood of current-state, future-state, and emotional content all mixed together, and Pablo didn't have a rule for what to grab first.</div>
+        <div class="moment-p">JJ's fix: stay strictly in current reality until it's fully mapped. Anything the prospect volunteers about the future gets set aside — acknowledged, not chased — until the situation and problem stages are actually complete. Mixing the order of the frameworks (going future → current reality) is possible, but it means flipping the whole structure on purpose, not doing it by accident mid-call.</div>
+        <div class="quote-block">
+          "Once you get comfortable, you can free-flow. That's the benefit. Right now you're just not comfortable with any of them — so stick to one."
+          <div class="quote-attr">JJ Hernandez</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="moment">
+      <div class="moment-head">
+        <div class="moment-num">03</div>
+        <div class="moment-title">You control the call — don't make yourself smaller to let them run</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-p">Pablo's instinct was to chase every interesting thread a prospect gave him, worried he'd "miss" something valuable. JJ's reframe: that's the prospect controlling the call, not Pablo. The fix isn't to remember everything — it's to interrupt respectfully and redirect: acknowledge what was said, then pull the conversation back to the current stage.</div>
+        <div class="quote-block">
+          "You gave me a lot of information there — I appreciate the context, but I want to understand where you're at right now. What do you believe is your biggest challenge, specifically?"
+          <div class="quote-attr">JJ Hernandez — example redirect</div>
+        </div>
+        <div class="moment-p">The underlying principle: every decision is rooted in clarity — for the rep first. If you don't understand the situation clearly enough to explain it back, you can't actually help them, no matter how much they've said.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Roleplay -->
+  <div class="section">
+    <div class="sec-eyebrow">Live Practice</div>
+    <h2 class="sec-title">Roleplay — catching it in real time</h2>
+    <div class="moment">
+      <div class="moment-head">
+        <div class="moment-num">▶</div>
+        <div class="moment-title">JJ played an erratic prospect; Pablo ran the open</div>
+      </div>
+      <div class="moment-body">
+        <div class="moment-p">JJ fed Pablo a rambling answer mixing income level, lifestyle spending, and an identity-level statement ("I guess I'm just ignorant about it") — deliberately similar to what real prospects had been doing to him. Pablo's first instinct was to chase the identity statement ("ignorant") and go deep on it immediately, which stalled him out.</div>
+        <div class="roleplay-turn"><div class="roleplay-role">Pablo</div><div class="roleplay-line">"Now to get more specific, I kind of want to understand what's not working to where you're not able to spend your money better."</div></div>
+        <div class="roleplay-turn"><div class="roleplay-role">"Prospect"</div><div class="roleplay-line">"I guess it's an education thing... an ignorance thing. I don't come from money. No one ever taught me financial literacy."</div></div>
+        <div class="roleplay-turn"><div class="roleplay-role">Pablo</div><div class="roleplay-line"><em>(pauses, unsure where to go — starts trying to unpack "ignorant" as an identity issue)</em></div></div>
+        <div class="roleplay-turn"><div class="roleplay-role">JJ (as coach)</div><div class="roleplay-line">"That would have been a great question to ask: 'What do you mean by that?' You're getting too advanced — stick to the process. You just need to understand the situation."</div></div>
+        <div class="callout">
+          <strong>The correction:</strong> when a prospect drops something loaded ("ignorant," "erratic spending"), the next move is the simple clarifying question — "What do you mean by that? How so?" — not an immediate deep dive into what it means about who they are. Identity-level work comes later, once the situation is fully understood.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pablo's catches -->
+  <div class="section">
+    <div class="sec-eyebrow">Pablo's Observations</div>
+    <h2 class="sec-title">What clicked by the end</h2>
+    <div class="catch-list">
+      <div class="catch-item">
+        <div class="catch-icon">→</div>
+        <div class="catch-text"><strong>Naming his own pattern:</strong> Pablo recognized mid-session that his instinct to "dig deep" on everything was actually him losing control, not being thorough — unprompted, before JJ fully spelled it out.</div>
+      </div>
+      <div class="catch-item">
+        <div class="catch-icon">→</div>
+        <div class="catch-text"><strong>The redirect line works both ways:</strong> Pablo saw that stopping to ask "what do you mean by that" doesn't just clarify — it slows the prospect down and builds productive tension, rather than being a compromise between control and curiosity.</div>
+      </div>
+      <div class="catch-item">
+        <div class="catch-icon">→</div>
+        <div class="catch-text"><strong>End-of-session confidence:</strong> Pablo confirmed the framework distinction landed — closed the session saying he could now slow prospects down and knew what to grab first when they gave him a wall of information.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action items -->
+  <div class="section">
+    <div class="sec-eyebrow">Next Steps</div>
+    <h2 class="sec-title">Action items</h2>
+    <div class="action-grid">
+      <div class="action-item">
+        <div class="action-owner">Pablo</div>
+        Ask Tristan's team for an SOP on lead source tracking — paid vs. organic, retargeting vs. direct-book, ad vs. lead magnet
+      </div>
+      <div class="action-item">
+        <div class="action-owner">Pablo</div>
+        Follow up with the stalled couple — reference the Finance to Freedom question directly, get them back on a joint call
+      </div>
+      <div class="action-item">
+        <div class="action-owner">Pablo</div>
+        Use the "fourth wall" technique on that call — name the gap between Sarah's buy-in and Todd's hesitation directly
+      </div>
+      <div class="action-item">
+        <div class="action-owner">Pablo</div>
+        Commit to current-reality-first structure; stop blending it with the goals-first open until fully comfortable
+      </div>
+      <div class="action-item">
+        <div class="action-owner">Pablo</div>
+        Practice "what do you mean by that?" as the default response to loaded or identity-level statements from prospects
+      </div>
+      <div class="action-item">
+        <div class="action-owner">JJ</div>
+        Send the hosted video link for this session so it can be embedded in this recap
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="doc-footer">
+  <span>Sales.io — Internal Coaching Recap</span>
+  <span>Pablo Humerez · Jul 21, 2026</span>
+</footer>
