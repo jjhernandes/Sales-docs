@@ -1,0 +1,261 @@
+
+<title>Call Approach Playbook — Financial Advisory Closers</title>
+<style>
+  :root {
+    --bg: #090908;
+    --surface: #111110;
+    --surface-2: #1a1916;
+    --accent: #e2cfa8;
+    --accent-soft: #f0e4c8;
+    --accent-dim: rgba(226,207,168,.07);
+    --accent-border: rgba(226,207,168,.14);
+    --text: #f0ece4;
+    --text-muted: #8a8475;
+    --text-faint: #3e3b30;
+    --border: #201f18;
+    --check: #7dcf95;
+    --check-dim: rgba(125,207,149,.08);
+    --mono: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #faf8f2; --surface: #f0ece0; --surface-2: #e4dece;
+      --accent: #8a6d3a; --accent-soft: #6b5228;
+      --accent-dim: rgba(138,109,58,.07); --accent-border: rgba(138,109,58,.2);
+      --text: #1a1914; --text-muted: #6a6450; --text-faint: #c0b898;
+      --border: #ddd8c8; --check: #2a7a45; --check-dim: rgba(42,122,69,.07);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#090908;--surface:#111110;--surface-2:#1a1916;
+    --accent:#e2cfa8;--accent-soft:#f0e4c8;
+    --accent-dim:rgba(226,207,168,.07);--accent-border:rgba(226,207,168,.14);
+    --text:#f0ece4;--text-muted:#8a8475;--text-faint:#3e3b30;
+    --border:#201f18;--check:#7dcf95;--check-dim:rgba(125,207,149,.08);
+  }
+  :root[data-theme="light"] {
+    --bg:#faf8f2;--surface:#f0ece0;--surface-2:#e4dece;
+    --accent:#8a6d3a;--accent-soft:#6b5228;
+    --accent-dim:rgba(138,109,58,.07);--accent-border:rgba(138,109,58,.2);
+    --text:#1a1914;--text-muted:#6a6450;--text-faint:#c0b898;
+    --border:#ddd8c8;--check:#2a7a45;--check-dim:rgba(42,122,69,.07);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:16px;scroll-behavior:smooth;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,'Segoe UI',system-ui,sans-serif;
+    font-size:.9375rem;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .doc-header{max-width:760px;margin:0 auto;padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--border);}
+  .eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.875rem;}
+  .doc-title{font-size:1.875rem;font-weight:700;letter-spacing:-.03em;line-height:1.2;color:var(--text);margin-bottom:.5rem;}
+  .doc-sub{color:var(--text-muted);font-size:.9375rem;max-width:56ch;line-height:1.6;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.125rem;}
+  .meta-chip{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.6875rem;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:.25rem .625rem;}
+  .meta-chip-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+
+  main{max-width:760px;margin:0 auto;padding:0 2rem 5rem;}
+  .section{padding:2.25rem 0 1.75rem;border-bottom:1px solid var(--border);}
+  .section:last-child{border-bottom:none;}
+  .sec-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:.75rem;}
+  .sec-title{font-size:1.0625rem;font-weight:650;color:var(--text);letter-spacing:-.015em;margin-bottom:1.25rem;}
+
+  .callout{padding:.875rem 1.125rem;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:2px;font-size:.875rem;color:var(--text-muted);line-height:1.65;}
+  .callout strong{color:var(--accent-soft);}
+
+  /* Funnel steps */
+  .funnel{display:flex;flex-direction:column;gap:.5rem;}
+  .funnel-step{display:flex;gap:1rem;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:var(--surface);}
+  .funnel-num{font-family:var(--mono);font-size:.75rem;font-weight:700;color:var(--accent);background:var(--surface-2);min-width:2.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .funnel-body{padding:.875rem 1rem;flex:1;}
+  .funnel-name{font-size:.9375rem;font-weight:650;color:var(--text);margin-bottom:.25rem;}
+  .funnel-desc{font-size:.8125rem;color:var(--text-muted);line-height:1.6;}
+  .funnel-desc strong{color:var(--text);}
+
+  /* Principles */
+  .principle-list{display:flex;flex-direction:column;gap:.625rem;}
+  .principle{border:1px solid var(--border);border-radius:3px;overflow:hidden;}
+  .principle-head{padding:.875rem 1.125rem;background:var(--surface-2);border-bottom:1px solid var(--border);font-size:.9375rem;font-weight:650;color:var(--text);}
+  .principle-body{padding:.875rem 1.125rem;background:var(--surface);font-size:.875rem;color:var(--text-muted);line-height:1.65;}
+  .principle-body strong{color:var(--text);}
+
+  .quote-block{margin:.75rem 0;padding:.75rem 1rem;background:var(--accent-dim);border-left:2px solid var(--accent);border-radius:0 2px 2px 0;font-size:.875rem;color:var(--accent-soft);line-height:1.6;font-style:italic;}
+
+  /* Scripts */
+  .script-grid{display:flex;flex-direction:column;gap:.5rem;}
+  .script-item{border:1px solid var(--border);border-radius:3px;padding:.875rem 1.125rem;background:var(--surface);}
+  .script-label{font-family:var(--mono);font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);opacity:.75;margin-bottom:.5rem;}
+  .script-text{font-size:.875rem;color:var(--text);line-height:1.65;font-style:italic;}
+  .script-note{font-size:.8125rem;color:var(--text-muted);margin-top:.5rem;line-height:1.6;}
+
+  /* Do/Don't */
+  .dodont-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+  .dodont-card{border-radius:3px;padding:.875rem 1.125rem;border:1px solid var(--border);}
+  .dodont-card.do{background:var(--check-dim);border-color:rgba(125,207,149,.25);}
+  .dodont-card.dont{background:rgba(224,96,96,.06);border-color:rgba(224,96,96,.2);}
+  .dodont-title{font-family:var(--mono);font-size:.625rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.625rem;}
+  .dodont-card.do .dodont-title{color:var(--check);}
+  .dodont-card.dont .dodont-title{color:#e06060;}
+  .dodont-card ul{padding-left:1.1rem;}
+  .dodont-card li{font-size:.8125rem;color:var(--text-muted);line-height:1.65;margin-bottom:.375rem;}
+  .dodont-card li:last-child{margin-bottom:0;}
+
+  .doc-footer{max-width:760px;margin:0 auto;padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-family:var(--mono);font-size:.575rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
+
+  @media(max-width:600px){
+    .doc-header,main{padding-left:1.25rem;padding-right:1.25rem;}
+    .doc-title{font-size:1.5rem;}
+    .dodont-grid{grid-template-columns:1fr;}
+    .funnel-step{flex-direction:column;}
+    .funnel-num{min-width:auto;padding:.4rem 0;}
+  }
+</style>
+
+<div class="doc-header">
+  <div class="eyebrow">Sales.io — Reference Playbook</div>
+  <h1 class="doc-title">Call Approach Playbook</h1>
+  <div class="doc-sub">For Tristan Steckler's financial advisory closers. Distilled from live coaching and a roleplay with Pablo, Jul 21 — what actually worked when a call started slipping.</div>
+  <div class="meta-row">
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Current-Reality-First</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Roleplay-Tested</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Companion to Jul 21 recap</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- Core principle -->
+  <div class="section">
+    <div class="sec-eyebrow">The Core Idea</div>
+    <h2 class="sec-title">Pick one framework. Commit to it.</h2>
+    <div class="callout">
+      <strong>The thing that breaks calls isn't the framework — it's running two at once.</strong> A "goals first" open and a "biggest challenge first" open both work on their own. Blending them mid-call is what causes the prospect's answer to spill across future, current-state, and emotion all at once, with no rule for what to grab first.
+    </div>
+  </div>
+
+  <!-- Funnel -->
+  <div class="section">
+    <div class="sec-eyebrow">The Structure</div>
+    <h2 class="sec-title">Current-reality-first, in order</h2>
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-num">1</div>
+        <div class="funnel-body">
+          <div class="funnel-name">Situation — Current Reality</div>
+          <div class="funnel-desc">Open with <strong>"What's the biggest challenge?"</strong> or <strong>"What's not working with your finances that you wish would?"</strong> — not a goals question. Stay here until it's fully mapped: what, how long, why it hasn't been fixed.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">2</div>
+        <div class="funnel-body">
+          <div class="funnel-name">Problem — Awareness</div>
+          <div class="funnel-desc">Drill into what they just described. Ask <strong>"what do you mean by that?"</strong> on anything vague or loaded before going further. Don't assume you understand a phrase like "erratic spending" or "ignorant" — get it specific.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">3</div>
+        <div class="funnel-body">
+          <div class="funnel-name">Solution — Awareness</div>
+          <div class="funnel-desc">Only once the problem is concrete: what have they tried, why didn't it work, what changed that made them reach out now.</div>
+        </div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-num">4</div>
+        <div class="funnel-body">
+          <div class="funnel-name">Goal / Future Pace / Consequence</div>
+          <div class="funnel-desc">This is where future-state talk belongs. If the prospect brings it up earlier, acknowledge it and bookmark it — don't chase it out of order.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Principles -->
+  <div class="section">
+    <div class="sec-eyebrow">Principles</div>
+    <h2 class="sec-title">Why this works</h2>
+    <div class="principle-list">
+      <div class="principle">
+        <div class="principle-head">You control the call — don't make yourself smaller to let them run it</div>
+        <div class="principle-body">The instinct to chase every interesting thread a prospect gives you feels like thoroughness. It's actually losing control. The fix isn't remembering everything they said — it's redirecting: acknowledge, then pull back to the current stage.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-head">Clarity is for you, not a performance for them</div>
+        <div class="principle-body">Questions aren't a script to run — they're how you get clarity for yourself. If you can't explain their situation back clearly, you can't help them, no matter how much they've talked.</div>
+        <div class="quote-block">"If they just knew this is the problem and this is how it's going to be solved — take my money. That's clarity doing the work."</div>
+      </div>
+      <div class="principle">
+        <div class="principle-head">Loaded statements get a clarifying question, not a deep dive</div>
+        <div class="principle-body">When a prospect drops something identity-level ("I guess I'm just ignorant about it"), the next move is simple: <strong>"What do you mean by that? How so?"</strong> Going straight into what it means about who they are is getting ahead of the process — that comes later, once the situation is fully mapped.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-head">Know where the lead came from before the call</div>
+        <div class="principle-body">Paid ad vs. organic, retargeting vs. direct-book, lead magnet vs. straight ad — each implies a different level of built-in buying intent. It changes how you open, not just what you say.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <div class="section">
+    <div class="sec-eyebrow">Quick Reference</div>
+    <h2 class="sec-title">Lines that work</h2>
+    <div class="script-grid">
+      <div class="script-item">
+        <div class="script-label">Opening the current-reality question</div>
+        <div class="script-text">"What's the biggest challenge for you right now when it comes to your finances? What's not working?"</div>
+      </div>
+      <div class="script-item">
+        <div class="script-label">Redirecting a prospect who's rambling across future/problem/emotion</div>
+        <div class="script-text">"You gave me a lot there, and I appreciate the context — but I want to make sure I understand where you're at right now. What would you say is the one biggest challenge?"</div>
+        <div class="script-note">Don't apologize for asking it again. Frame it as wanting to be clear for both of you.</div>
+      </div>
+      <div class="script-item">
+        <div class="script-label">On a loaded or identity-level statement</div>
+        <div class="script-text">"What do you mean by that? How so?"</div>
+        <div class="script-note">Use this before going deeper into what a statement like "erratic" or "ignorant" means about them as a person.</div>
+      </div>
+      <div class="script-item">
+        <div class="script-label">Two decision-makers, one not bought in ("the fourth wall")</div>
+        <div class="script-text">"[Name], I see you're there. [Partner], I see you're not — what's missing for you? What would you need to know for this to be a yes for you too?"</div>
+        <div class="script-note">Names the gap directly instead of pretending both are equally in. Turns it into the rep and the bought-in partner bringing the other one along, rather than arguing against both.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Do / Don't -->
+  <div class="section">
+    <div class="sec-eyebrow">At a Glance</div>
+    <h2 class="sec-title">Do this / not that</h2>
+    <div class="dodont-grid">
+      <div class="dodont-card do">
+        <div class="dodont-title">Do</div>
+        <ul>
+          <li>Pick current-reality-first or goals-first — one, not both</li>
+          <li>Ask "what do you mean by that?" before going deep</li>
+          <li>Redirect rambling answers back to the current stage</li>
+          <li>Bookmark future-state info for later, don't chase it early</li>
+          <li>Check lead source before the call to calibrate approach</li>
+        </ul>
+      </div>
+      <div class="dodont-card dont">
+        <div class="dodont-title">Don't</div>
+        <ul>
+          <li>Chase an identity-level statement before the situation is mapped</li>
+          <li>Let a prospect's tangent dictate what you ask next</li>
+          <li>Assume you understand a vague phrase without asking</li>
+          <li>Mix future-pace questions into the current-reality stage</li>
+          <li>Treat "I don't want to miss anything" as a reason to lose the frame</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="doc-footer">
+  <span>Sales.io — Reference Playbook</span>
+  <span>Companion to Pablo Humerez recap · Jul 21, 2026</span>
+</footer>
