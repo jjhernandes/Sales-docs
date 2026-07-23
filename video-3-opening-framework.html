@@ -1,0 +1,291 @@
+
+<title>Video 3 — The Opening Framework</title>
+<style>
+  :root {
+    --bg: #090908;
+    --surface: #111110;
+    --surface-2: #1a1916;
+    --accent: #e2cfa8;
+    --accent-soft: #f0e4c8;
+    --accent-dim: rgba(226,207,168,.07);
+    --accent-border: rgba(226,207,168,.14);
+    --text: #f0ece4;
+    --text-muted: #8a8475;
+    --text-faint: #3e3b30;
+    --border: #201f18;
+    --mono: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #faf8f2; --surface: #f0ece0; --surface-2: #e4dece;
+      --accent: #8a6d3a; --accent-soft: #6b5228;
+      --accent-dim: rgba(138,109,58,.07); --accent-border: rgba(138,109,58,.2);
+      --text: #1a1914; --text-muted: #6a6450; --text-faint: #c0b898;
+      --border: #ddd8c8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#090908;--surface:#111110;--surface-2:#1a1916;
+    --accent:#e2cfa8;--accent-soft:#f0e4c8;
+    --accent-dim:rgba(226,207,168,.07);--accent-border:rgba(226,207,168,.14);
+    --text:#f0ece4;--text-muted:#8a8475;--text-faint:#3e3b30;
+    --border:#201f18;
+  }
+  :root[data-theme="light"] {
+    --bg:#faf8f2;--surface:#f0ece0;--surface-2:#e4dece;
+    --accent:#8a6d3a;--accent-soft:#6b5228;
+    --accent-dim:rgba(138,109,58,.07);--accent-border:rgba(138,109,58,.2);
+    --text:#1a1914;--text-muted:#6a6450;--text-faint:#c0b898;
+    --border:#ddd8c8;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:16px;scroll-behavior:smooth;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,'Segoe UI',system-ui,sans-serif;
+    font-size:.9375rem;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .doc-header{max-width:760px;margin:0 auto;padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--border);}
+  .eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.875rem;}
+  .doc-title{font-size:1.875rem;font-weight:700;letter-spacing:-.03em;line-height:1.2;color:var(--text);margin-bottom:.5rem;}
+  .doc-sub{color:var(--text-muted);font-size:.9375rem;max-width:58ch;line-height:1.7;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.125rem;}
+  .meta-chip{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.6875rem;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:.25rem .625rem;}
+  .meta-chip-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+
+  main{max-width:760px;margin:0 auto;padding:0 2rem 5rem;}
+  .section{padding:2.25rem 0 1.75rem;border-bottom:1px solid var(--border);}
+  .section:last-child{border-bottom:none;}
+  .sec-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:.75rem;}
+  .sec-title{font-size:1.0625rem;font-weight:650;color:var(--text);letter-spacing:-.015em;margin-bottom:1.25rem;}
+
+  /* Title options */
+  .title-opt{display:flex;gap:.75rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.875rem 1.125rem;margin-bottom:.5rem;font-size:.875rem;color:var(--text);}
+  .title-opt-num{font-family:var(--mono);font-size:.65rem;color:var(--accent);flex-shrink:0;margin-top:.15rem;}
+
+  /* Framework component cards */
+  .component{margin-bottom:.75rem;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+  .component-head{padding:.9375rem 1.125rem;background:var(--surface-2);border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:.75rem;}
+  .component-num{font-family:var(--mono);font-size:.7rem;color:var(--accent);flex-shrink:0;}
+  .component-title{font-size:.9375rem;font-weight:650;color:var(--text);}
+  .component-body{padding:.9375rem 1.125rem;background:var(--surface);}
+  .component-body ul{padding-left:1.15rem;}
+  .component-body li{font-size:.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:.4rem;}
+  .component-body li:last-child{margin-bottom:0;}
+  .component-body li strong{color:var(--text);}
+
+  /* Generic bullet section */
+  .bullets{padding-left:1.15rem;margin-bottom:1rem;}
+  .bullets li{font-size:.875rem;color:var(--text-muted);line-height:1.75;margin-bottom:.5rem;}
+  .bullets li:last-child{margin-bottom:0;}
+  .bullets li strong{color:var(--text);font-weight:600;}
+
+  .narration{margin:1rem 0;padding:1rem 1.25rem;background:var(--accent-dim);border-left:2px solid var(--accent);border-radius:0 6px 6px 0;font-size:.875rem;color:var(--accent-soft);line-height:1.75;font-style:italic;}
+  .narration-label{font-family:var(--mono);font-size:.575rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:.5rem;font-style:normal;display:block;}
+  .narration p+p{margin-top:.75rem;}
+
+  .callout{padding:.875rem 1.125rem;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:6px;font-size:.875rem;color:var(--text-muted);line-height:1.7;}
+  .callout strong{color:var(--accent-soft);}
+
+  .takeaway{text-align:center;padding:2.5rem 1rem;}
+  .takeaway p{font-size:1.125rem;font-style:italic;color:var(--text);line-height:1.65;max-width:52ch;margin:0 auto;}
+  .takeaway p strong{font-style:normal;color:var(--accent-soft);}
+
+  .doc-footer{max-width:760px;margin:0 auto;padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-family:var(--mono);font-size:.575rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
+
+  @media(max-width:600px){
+    .doc-header,main{padding-left:1.25rem;padding-right:1.25rem;}
+    .doc-title{font-size:1.5rem;}
+  }
+</style>
+
+<div class="doc-header">
+  <div class="eyebrow">Sales.io — Video Script &amp; Filming Doc</div>
+  <h1 class="doc-title">Video 3 — The Opening Framework</h1>
+  <div class="doc-sub">What actually happens in the first ten minutes of a high-ticket sales call. Draft narration and full production outline, combined into one working doc.</div>
+  <div class="meta-row">
+    <div class="meta-chip"><div class="meta-chip-dot"></div>For JJ &amp; Joshua</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Cold open, no intro</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>6 sections</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- Title options -->
+  <div class="section">
+    <div class="sec-eyebrow">Working Titles</div>
+    <h2 class="sec-title">Pick one</h2>
+    <div class="title-opt"><span class="title-opt-num">01</span><span>I've reviewed thousands of sales calls. The best ones all start the same way.</span></div>
+    <div class="title-opt"><span class="title-opt-num">02</span><span>What actually happens in the first 10 minutes of a high ticket sales call</span></div>
+    <div class="title-opt"><span class="title-opt-num">03</span><span>What I do in the first 10 minutes of every sales call</span></div>
+  </div>
+
+  <!-- What it's about -->
+  <div class="section">
+    <div class="sec-eyebrow">Premise</div>
+    <h2 class="sec-title">What this video is about</h2>
+    <p style="font-size:.9375rem;color:var(--text-muted);line-height:1.8;">The first ten minutes of a sales call decide everything. Most closers are wasting them without knowing it. This video shows exactly what the best closers do instead.</p>
+    <div class="callout" style="margin-top:1rem;">
+      <strong>Working name for the framework:</strong> "The Opening Framework" — open to a better name if one lands more with what this actually is.
+    </div>
+  </div>
+
+  <!-- Section 1: Cold Open -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 1</div>
+    <h2 class="sec-title">Cold Open</h2>
+    <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:1rem;">No introduction. Speak directly to the closer who has a call coming up.</p>
+    <ul class="bullets">
+      <li>Most closers have already lost by minute two</li>
+      <li>Not because of anything they said</li>
+      <li>Because of everything that happened before they said it</li>
+      <li><strong>The first ten minutes are not the warm up. They are the sale.</strong></li>
+    </ul>
+    <div class="narration">
+      <span class="narration-label">Draft narration — usable as-is</span>
+      <p>"You can feel a sales call going wrong before you can name what's happening. Something shifts in the first few minutes and by the time you notice it, it's already too late. Most closers spend their whole career trying to fix that with better technique. The technique was never the problem."</p>
+    </div>
+  </div>
+
+  <!-- Section 2: The Problem -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 2</div>
+    <h2 class="sec-title">The Problem</h2>
+    <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:1rem;">Make the viewer recognize exactly what they're doing wrong right now.</p>
+    <ul class="bullets">
+      <li>Treating the opening as small talk</li>
+      <li>Waiting for the real conversation to start</li>
+      <li>Likability before respect — getting this backwards</li>
+      <li>The prospect has already decided something before you ask your first question</li>
+    </ul>
+  </div>
+
+  <!-- Section 3: The Reframe -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 3</div>
+    <h2 class="sec-title">The Reframe</h2>
+    <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:1rem;">Name the central idea. Make it land before the framework begins.</p>
+    <ul class="bullets">
+      <li>The first ten minutes are not about rapport</li>
+      <li><strong>They are about authority</strong></li>
+      <li>Authority is the prerequisite for everything that follows</li>
+      <li>Without it, objection handling is pointless — the prospect won't take your word for anything</li>
+    </ul>
+    <div class="narration">
+      <span class="narration-label">Draft narration — credibility beat, adapt into this section</span>
+      <p>"I've been inside the sales operations of the biggest names in this industry. I've reviewed thousands of calls at every level. I run Sales.io — we place and coach high-ticket closers, and the people I work with every day are asking exactly these questions. The pattern never changes. The closers who win don't close better. They open differently."</p>
+    </div>
+  </div>
+
+  <!-- Section 4: The Framework -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 4</div>
+    <h2 class="sec-title">The Framework</h2>
+    <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:1rem;">What actually happens in the first ten minutes when a closer is operating at the highest level. Show it where possible — say the words, demonstrate the silence, walk through the agenda as if the viewer is the prospect.</p>
+
+    <div class="narration" style="margin-bottom:1.25rem;">
+      <span class="narration-label">Framework intro line</span>
+      <p>"I'm going to walk you through exactly what happens in those first ten minutes when someone is operating at the highest level. What they say. What they don't say. How they open the call in a way that makes everything that follows easier. And what most closers do instead that creates resistance before a single real question has been asked."</p>
+    </div>
+
+    <div class="component">
+      <div class="component-head"><span class="component-num">01</span><span class="component-title">Respect Before Likability</span></div>
+      <div class="component-body">
+        <ul>
+          <li>Most closers optimize for being liked</li>
+          <li>The best closers optimize for being respected</li>
+          <li>Those are completely different things — the prospect responds to them differently</li>
+          <li><strong>Respect first. Likability follows.</strong></li>
+          <li>Show what that actually looks like in the first sixty seconds</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-head"><span class="component-num">02</span><span class="component-title">Opening the Agenda</span></div>
+      <div class="component-body">
+        <ul>
+          <li>This is where leadership starts</li>
+          <li>Most closers never do this</li>
+          <li>Demonstrate what JJ actually says to open a call</li>
+          <li>The prospect relaxes when someone takes control of the room</li>
+          <li><strong>You cannot lead a call you have not opened</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-head"><span class="component-num">03</span><span class="component-title">The First Two Minutes</span></div>
+      <div class="component-body">
+        <ul>
+          <li>Sales are always lost if trust isn't created here</li>
+          <li>Not rapport — <strong>trust</strong></li>
+          <li>Show what the difference between the two actually looks like on a call</li>
+          <li>The prospect is deciding whether you're worth listening to</li>
+          <li>Everything after this is downstream of what happens here</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="component">
+      <div class="component-head"><span class="component-num">04</span><span class="component-title">Authority as Prerequisite</span></div>
+      <div class="component-body">
+        <ul>
+          <li>Objection handling only works if authority is already present</li>
+          <li>Without it, the prospect doesn't take your word for anything</li>
+          <li>You cannot install authority mid-call — it has to be there from the start</li>
+          <li>Show what authority actually looks and sounds like in the first ten minutes</li>
+          <li><strong>Real observation from inside Hormozi and Iman's operations</strong> — the closers who couldn't establish authority never recovered from it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Takeaway -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 5</div>
+    <h2 class="sec-title">The Takeaway</h2>
+    <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:1rem;">One thing the viewer does differently on their next call. Something they can implement in the next two hours.</p>
+    <ul class="bullets">
+      <li>One thing to change on the next call</li>
+      <li>Open the agenda — say what you're there to do and why</li>
+      <li>Respect before likability — lead with that intention from the first second</li>
+      <li>The prospect is deciding in the first two minutes. Be worth deciding for.</li>
+    </ul>
+  </div>
+
+  <!-- Section 6: Outro -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 6</div>
+    <h2 class="sec-title">Outro</h2>
+    <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:1rem;">Callback. Channel. Sales.io. Sign off.</p>
+    <ul class="bullets">
+      <li>The best closers do not wing the first ten minutes</li>
+      <li>They know exactly what they're doing and why</li>
+      <li>Channel — natural, one line</li>
+      <li>Sales.io — one line</li>
+      <li>Sign off</li>
+    </ul>
+    <div class="narration">
+      <span class="narration-label">Draft outro — usable as-is</span>
+      <p>"Most closers lose deals in the middle of calls trying to fix something that broke in the first two minutes. Now you know where to look."</p>
+      <p>"If you want to work on this at a higher level — Sales.io is in the description. And if you want more of this, everything I know is on my channel."</p>
+      <p>"I'll see you in the next one."</p>
+    </div>
+  </div>
+
+  <!-- Final takeaway -->
+  <div class="takeaway">
+    <p>Open the agenda. <strong>Respect before likability.</strong> The first two minutes are not the warm up. They are the sale.</p>
+  </div>
+
+</main>
+
+<footer class="doc-footer">
+  <span>Sales.io — Content Bible / Video Script</span>
+  <span>Video 3 · The Opening Framework</span>
+</footer>
