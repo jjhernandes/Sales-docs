@@ -1,0 +1,210 @@
+
+<title>Tom — Ops &amp; Tracking Overview</title>
+<style>
+  :root {
+    --bg: #090908;
+    --surface: #111110;
+    --surface-2: #1a1916;
+    --accent: #e2cfa8;
+    --accent-soft: #f0e4c8;
+    --accent-dim: rgba(226,207,168,.07);
+    --accent-border: rgba(226,207,168,.14);
+    --text: #f0ece4;
+    --text-muted: #8a8475;
+    --text-faint: #3e3b30;
+    --border: #201f18;
+    --check: #7dcf95;
+    --red: #e07a7a;
+    --mono: 'SF Mono','Fira Code','Consolas',monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #faf8f2; --surface: #f0ece0; --surface-2: #e4dece;
+      --accent: #8a6d3a; --accent-soft: #6b5228;
+      --accent-dim: rgba(138,109,58,.07); --accent-border: rgba(138,109,58,.2);
+      --text: #1a1914; --text-muted: #6a6450; --text-faint: #c0b898;
+      --border: #ddd8c8; --check: #2a7a45; --red: #b3564a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#090908;--surface:#111110;--surface-2:#1a1916;
+    --accent:#e2cfa8;--accent-soft:#f0e4c8;
+    --accent-dim:rgba(226,207,168,.07);--accent-border:rgba(226,207,168,.14);
+    --text:#f0ece4;--text-muted:#8a8475;--text-faint:#3e3b30;
+    --border:#201f18;--check:#7dcf95;--red:#e07a7a;
+  }
+  :root[data-theme="light"] {
+    --bg:#faf8f2;--surface:#f0ece0;--surface-2:#e4dece;
+    --accent:#8a6d3a;--accent-soft:#6b5228;
+    --accent-dim:rgba(138,109,58,.07);--accent-border:rgba(138,109,58,.2);
+    --text:#1a1914;--text-muted:#6a6450;--text-faint:#c0b898;
+    --border:#ddd8c8;--check:#2a7a45;--red:#b3564a;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:16px;scroll-behavior:smooth;}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,'Segoe UI',system-ui,sans-serif;
+    font-size:.9375rem;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .doc-header{max-width:760px;margin:0 auto;padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--border);}
+  .eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.875rem;}
+  .doc-title{font-size:1.875rem;font-weight:700;letter-spacing:-.03em;line-height:1.2;color:var(--text);margin-bottom:.5rem;}
+  .doc-sub{color:var(--text-muted);font-size:.9375rem;max-width:60ch;line-height:1.7;}
+  .meta-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.125rem;}
+  .meta-chip{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.6875rem;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:.25rem .625rem;}
+  .meta-chip-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+
+  main{max-width:760px;margin:0 auto;padding:0 2rem 5rem;}
+  .section{padding:2.25rem 0 1.75rem;border-bottom:1px solid var(--border);}
+  .section:last-child{border-bottom:none;}
+  .sec-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:.75rem;}
+  .sec-title{font-size:1.0625rem;font-weight:650;color:var(--text);letter-spacing:-.015em;margin-bottom:1.25rem;}
+
+  /* Cadence timeline */
+  .cadence{display:flex;flex-direction:column;gap:.625rem;}
+  .cad-row{display:flex;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9375rem 1.125rem;}
+  .cad-day{font-family:var(--mono);font-size:.7rem;font-weight:700;color:var(--accent);min-width:5.5rem;flex-shrink:0;padding-top:.1rem;}
+  .cad-body{font-size:.85rem;color:var(--text-muted);line-height:1.65;}
+  .cad-body strong{color:var(--text);}
+
+  /* System cards */
+  .sys-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.125rem 1.375rem;margin-bottom:.75rem;}
+  .sys-name{font-size:.9375rem;font-weight:650;color:var(--text);margin-bottom:.5rem;}
+  .sys-desc{font-size:.85rem;color:var(--text-muted);line-height:1.7;margin-bottom:.625rem;}
+  .sys-desc:last-child{margin-bottom:0;}
+  .sys-flag{display:flex;gap:.625rem;align-items:flex-start;font-size:.8125rem;color:var(--red);line-height:1.65;margin-top:.5rem;}
+  .sys-flag::before{content:'⚠';flex-shrink:0;}
+
+  .problem-list{display:flex;flex-direction:column;gap:.625rem;}
+  .problem-item{display:flex;gap:.75rem;align-items:flex-start;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:8px;padding:.9375rem 1.125rem;font-size:.85rem;color:var(--text-muted);line-height:1.7;}
+  .problem-item strong{color:var(--text);}
+
+  .ask-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1.125rem 1.375rem;}
+  .ask-box p{font-size:.875rem;color:var(--text-muted);line-height:1.75;}
+  .ask-box p+p{margin-top:.625rem;}
+  .ask-box strong{color:var(--text);}
+
+  .action-grid{display:flex;flex-direction:column;gap:.5rem;}
+  .action-item{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem .875rem;background:var(--surface);border:1px solid var(--border);border-radius:3px;font-size:.875rem;color:var(--text-muted);line-height:1.5;}
+  .action-owner{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);opacity:.7;flex-shrink:0;margin-top:.15rem;min-width:3.5rem;}
+
+  .doc-footer{max-width:760px;margin:0 auto;padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-family:var(--mono);font-size:.575rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
+
+  @media(max-width:600px){
+    .doc-header,main{padding-left:1.25rem;padding-right:1.25rem;}
+    .doc-title{font-size:1.5rem;}
+    .cad-row{flex-direction:column;gap:.375rem;}
+  }
+</style>
+
+<div class="doc-header">
+  <div class="eyebrow">Sales.io — Discovery Notes</div>
+  <h1 class="doc-title">Tom — Ops &amp; Tracking Overview</h1>
+  <div class="doc-sub">From Tom's Loom walkthrough of his weekly cadence, current data tracking setup, and where it's breaking down.</div>
+  <div class="meta-row">
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Weekly cadence mapped</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>4 tracking systems in use</div>
+    <div class="meta-chip"><div class="meta-chip-dot"></div>Core ask: one accurate system</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- Weekly cadence -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 1</div>
+    <h2 class="sec-title">Tom's Weekly Cadence</h2>
+    <div class="cadence">
+      <div class="cad-row">
+        <div class="cad-day">Monday</div>
+        <div class="cad-body"><strong>11:45 — Full team meeting.</strong> Entire sales team, all offices together. Recap of everything: what to expect, upcoming events, what to be planning for.</div>
+      </div>
+      <div class="cad-row">
+        <div class="cad-day">Mon / Wed / Fri</div>
+        <div class="cad-body"><strong>12:00 — Setting calls.</strong> Monday is projection-based: review last week's data, set expectations and a plan for the coming week, look back at past dates too. Wednesday is a training call, built around whatever feedback or topics setters bring up — an hour of training, some roleplay or practice. Friday is live call reviews, or another training/roleplay session, keeping everyone sharp on issues that came up that week.</div>
+      </div>
+      <div class="cad-row">
+        <div class="cad-day">Monday</div>
+        <div class="cad-body"><strong>30 min each with offer owners</strong> — Tom, Justin, and Tauha.</div>
+      </div>
+      <div class="cad-row">
+        <div class="cad-day">Rest of week</div>
+        <div class="cad-body">Fairly flexible. Walk, gym, and personal time before the 12:00 meetings; from 12:00 onward, reviewing data and working through everything.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tracking systems -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 2</div>
+    <h2 class="sec-title">Tracking Systems Currently in Use</h2>
+    <p style="font-size:.8125rem;color:var(--text-faint);margin-bottom:1.25rem;">Four separate systems right now, none of them fully trusted.</p>
+
+    <div class="sys-card">
+      <div class="sys-name">1. Setter Tracking Sheet</div>
+      <div class="sys-desc">Each setter (e.g. Liam) logs their own numbers day by day — first 20 days of the month shown as an example. Recently started adding notes and objections after Tom explained the gap; wasn't doing that before.</div>
+      <div class="sys-flag">Percentage of leads looks unrealistically low, qualified set rate looks too high — likely not being filled in accurately across the team</div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-name">2. Setaflow (Josiah's tool)</div>
+      <div class="sys-desc">One DM setter (Josiah) brought this over from his own mentorship — running it alongside the main tracking. Goes through conversations per day plus a log of closes and sets. Looks like a nice format, but the underlying data needs to actually be kept current.</div>
+      <div class="sys-flag">Show rate comes out higher than what's on the calendar — not fully accurate, and unclear how consistently Josiah is updating it</div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-name">3. GoHighLevel Dashboard</div>
+      <div class="sys-desc">Auto-tracks time on calls, outbound call volume, answered/missed/failed/busy breakdowns. Example day: 122 outbound calls, 106 marked "answered," 8 booked.</div>
+      <div class="sys-flag">Answer numbers don't hold up — doesn't seem realistic that 106 of 122 dials actually got answered. Voicemails are getting counted as "answered" too, which drags average call time down to something like 10 seconds and skews the data further. The only genuinely reliable metric out of this dashboard is total time spent on calls.</div>
+    </div>
+
+    <div class="sys-card">
+      <div class="sys-name">4. Tom's Main Comparison Sheet</div>
+      <div class="sys-desc">Used to compare all setters side by side and get a daily overview. Supplemented by manually checking GoHighLevel's Opportunities tab, filtered by each setter, to see how many leads they're actually moving through stages each day.</div>
+    </div>
+  </div>
+
+  <!-- The core problem -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 3</div>
+    <h2 class="sec-title">The Core Problem</h2>
+    <div class="problem-list">
+      <div class="problem-item"><strong>Four disconnected systems, one source of truth missing.</strong> The setter sheet, Setaflow, GoHighLevel, and Tom's comparison sheet all exist in parallel — none of them fully trusted on its own.</div>
+      <div class="problem-item"><strong>Manual entry isn't consistent.</strong> Even with reminders (which has helped recently), Tom can't be fully confident the team is filling things in accurately or every single day.</div>
+      <div class="problem-item"><strong>GoHighLevel's automated tracking has real gaps.</strong> Voicemails counting as answered calls, answer rates that don't pass a basic sanity check — the platform's own numbers can't be taken at face value.</div>
+    </div>
+  </div>
+
+  <!-- What Tom is asking for -->
+  <div class="section">
+    <div class="sec-eyebrow">Section 4</div>
+    <h2 class="sec-title">What Tom Is Actually Asking For</h2>
+    <div class="ask-box">
+      <p><strong>Option A:</strong> A better tracking system altogether — something similar to what's already being tried (like Setaflow), if there's a cleaner or more reliable version of that kind of setup.</p>
+      <p><strong>Option B:</strong> Keep the existing tracking sheet, but get specific about exactly what needs to be filled in and how, so accuracy stops being a guessing game.</p>
+      <p>Either way, the underlying ask is the same: <strong>a way to actually trust the numbers</strong> — not four partial pictures that don't agree with each other.</p>
+    </div>
+  </div>
+
+  <!-- Next steps -->
+  <div class="section">
+    <div class="sec-eyebrow">Next Steps</div>
+    <h2 class="sec-title">Follow-Up Items</h2>
+    <div class="action-grid">
+      <div class="action-item"><div class="action-owner">JJ</div>Recommend either a single tracking system to standardize on, or a clear, specific spec for what the current sheet needs logged and how</div>
+      <div class="action-item"><div class="action-owner">Tom</div>Double check with Liam directly on the lead percentage / qualified set rate numbers that look off</div>
+      <div class="action-item"><div class="action-owner">Tom</div>Decide whether Josiah keeps running Setaflow alongside everything else, or whether that gets folded into one standard system</div>
+      <div class="action-item"><div class="action-owner">Tom</div>Keep reminding the team on daily entry — already improved recently, keep the pressure on</div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="doc-footer">
+  <span>Sales.io — Discovery Notes</span>
+  <span>Tom · Ops &amp; Tracking Overview</span>
+</footer>
